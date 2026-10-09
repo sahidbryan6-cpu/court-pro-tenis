@@ -23,7 +23,7 @@
     setStep(Math.min(2, Math.floor(p * 3)));
     bar.style.transform = `scaleY(${p.toFixed(4)})`;
     if (!reduceMotion.matches) {
-      const rot = -24 + p * 48, x = (0.5 - p) * 160, s = 0.85 + Math.sin(p * Math.PI) * 0.25;
+      const rot = -18 + p * 36, x = (0.5 - p) * Math.min(160, innerWidth * 0.1), s = 0.88 + Math.sin(p * Math.PI) * 0.16;
       shoeBox.style.transform = `translate3d(${x.toFixed(2)}px, 0, 0) rotate(${rot.toFixed(3)}deg) scale(${s.toFixed(4)})`;
     }
   }, 120);

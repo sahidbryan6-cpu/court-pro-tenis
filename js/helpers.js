@@ -26,5 +26,5 @@ const byId = id => PRODUCT_MAP.get(id);
 // angle: 0 lateral, 1 dynamic (tilted), 2 medial (mirrored)
 function shoeSVG([upper, accent, sole], angle = 0, cls = "") {
   const t = angle === 1 ? ' transform="rotate(-10 200 120) translate(0 10)"' : angle === 2 ? ' transform="scale(-1 1) translate(-400 0)"' : "";
-  return `<svg class="${cls}" viewBox="0 0 400 220" aria-hidden="true" style="--m:${upper};--a:${accent};--s:${sole}"><use href="#shoe"${t}/></svg>`;
+  return `<svg class="${cls}" viewBox="0 0 400 220" aria-hidden="true" style="overflow:visible;--m:${upper};--a:${accent};--s:${sole}"><use href="#shoe"${t}/></svg>`;
 }

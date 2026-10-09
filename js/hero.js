@@ -14,7 +14,7 @@ if (!reduceMotion.matches) {
   addEffect(hero, r => clamp(-r.top / r.height), p => {
     text.style.transform = `translate3d(0, ${(p * -220).toFixed(2)}px, 0) scale(${(1 - p * 0.16).toFixed(4)})`;
     text.style.opacity = clamp(1 - p * 1.8).toFixed(3);
-    stage.style.transform = `translate3d(0, ${(p * -150).toFixed(2)}px, 0) rotate(${(-6 + p * 22).toFixed(3)}deg) scale(${(1 + p * 0.3).toFixed(4)})`;
+    stage.style.transform = `translate3d(0, ${(p * -70).toFixed(2)}px, 0) rotate(${(-6 + p * 16).toFixed(3)}deg) scale(${(1 + p * 0.12).toFixed(4)})`;
     hero.style.setProperty("--hp", p.toFixed(4));   // glow + court drift slower than the content (depth)
   }, 90);
   // eyebrow → title → tag cascade in CSS ([data-enter], css/15-motion.css); the shoe glides in right after

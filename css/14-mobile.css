@@ -41,7 +41,7 @@
 
   /* hero: the shoe can use the full width */
   .hero { padding-top: 48px; }
-  .hero__stage { width: 100vw; max-width: 560px; }
+  .hero__stage { width: 94vw; max-width: 560px; min-width: 0; }
   .hero__cta { margin-top: 8px; padding-bottom: 56px; }
 
   /* sections breathe a little less on small screens */
