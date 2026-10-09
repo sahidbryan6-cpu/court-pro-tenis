@@ -51,6 +51,19 @@
 })();
 
 /* =========================================================
+   Type bands — two rows of giant words slide in opposite directions with the scroll
+   ========================================================= */
+(function typeBands() {
+  if (reduceMotion.matches) return;
+  const sec = $("#marquee"), a = $("#mq-1"), b = $("#mq-2");
+  // 0 when the band enters at the bottom of the screen, 1 when it leaves at the top
+  addEffect(sec, (r, vh) => clamp((vh - r.top) / (vh + r.height)), p => {
+    a.style.transform = `translate3d(${(-p * 38).toFixed(3)}%, 0, 0)`;
+    b.style.transform = `translate3d(${(-38 + p * 38).toFixed(3)}%, 0, 0)`;
+  }, 140);
+})();
+
+/* =========================================================
    Local nav — an underline that glides to the section in view
    ========================================================= */
 (function navIndicator() {

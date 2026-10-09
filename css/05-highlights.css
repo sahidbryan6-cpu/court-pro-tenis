@@ -26,7 +26,7 @@
 .hl__copy h3 { font: 700 clamp(1.6rem, 3vw, 2.5rem)/1.08 var(--font-display); letter-spacing: -0.022em; margin: 0; }
 .hl__copy p { font-size: clamp(1rem, 1.4vw, 1.2rem); color: rgba(245,245,247,.78); margin: 12px 0 0; max-width: 38ch; line-height: 1.4; font-weight: 500; letter-spacing: -0.02em; }
 .hl__art { position: absolute; inset: auto 0 0 0; display: flex; justify-content: center; align-items: flex-end; padding: 0 30px 40px; }
-.hl__art svg { width: min(820px, 92%); transition: transform 1200ms var(--ease-out); transform: translateX(8%) rotate(-6deg) scale(.96); filter: drop-shadow(0 30px 40px rgba(0,0,0,.5)); }
+.hl__art svg { width: min(820px, 92%); transition: transform 1200ms var(--ease-out); transform: translateX(32%) rotate(-14deg) scale(.82); filter: drop-shadow(0 30px 40px rgba(0,0,0,.5)); }
 .hl.is-current .hl__art svg { transform: none; }
 .hl__big { position: absolute; left: 48px; bottom: 44px; font: 800 clamp(5rem, 14vw, 11rem)/.95 var(--font-display); letter-spacing: -0.035em; }
 .hl__big small { font-size: .32em; letter-spacing: -0.02em; margin-left: .1em; }

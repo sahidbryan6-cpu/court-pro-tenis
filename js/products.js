@@ -60,7 +60,7 @@ function observeCards(root) {
     entries.forEach(en => {
       if (!en.isIntersecting) return;
       const el = en.target;
-      el.style.setProperty("--d", `${Math.min(i++, 6) * 50}ms`);
+      el.style.setProperty("--d", `${Math.min(i++, 6) * 90}ms`);
       el.classList.add("is-in");
       // once the entrance finishes, drop the classes so hover transitions aren't delayed
       el.addEventListener("transitionend", function done(ev) {

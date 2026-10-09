@@ -100,6 +100,15 @@
 .modal.is-open .modal__thumbs button, .modal.is-open .sizes button { animation: pop-in 460ms var(--ease-out) backwards; animation-delay: calc(var(--k, 0) * 28ms + 160ms); }
 @keyframes pop-in { from { opacity: 0; transform: translate3d(0, 8px, 0) scale(.96); } }
 
+/* ---------- Giant type bands that slide in opposite directions while scrolling ---------- */
+.marquee { overflow: hidden; padding: 40px 0 70px; display: grid; gap: 4px; }
+.marquee__row {
+  width: max-content; white-space: nowrap; will-change: transform;
+  font: 800 clamp(4rem, 11vw, 10rem)/1 var(--font-display); letter-spacing: -0.02em; color: #f5f5f7;
+}
+.marquee__row--outline { color: transparent; -webkit-text-stroke: 1.5px rgba(198,255,61,.55); }
+@media (max-width: 760px) { .marquee { padding: 10px 0 40px; } .marquee__row--outline { -webkit-text-stroke-width: 1px; } }
+
 /* ---------- Reduced motion (unless the visitor turned animations on) ---------- */
 @media (prefers-reduced-motion: reduce) {
   :root:not(.motion-on) .split-word > span { transform: none; transition: none; }
@@ -110,6 +119,7 @@
   :root:not(.motion-on) .anat__label > * { opacity: 1; transform: none; }
   :root:not(.motion-on) .cmp__img svg, :root:not(.motion-on) .meter-dots i.on { opacity: 1; transform: none; transition: none; }
   :root:not(.motion-on) .anat__layer.is-focus { scale: 1; }
+  :root:not(.motion-on) .marquee__row { transform: none !important; }
 }
 /* touch: blur filters on large text blocks are costly on phones */
 @media (hover: none) and (pointer: coarse) {
