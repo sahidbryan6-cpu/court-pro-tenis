@@ -3,8 +3,8 @@
 /* =========================================================
    HIGHLIGHTS carousel
    ========================================================= */
-.section { padding: 140px 0; }
-.section__head { display: flex; align-items: flex-end; justify-content: space-between; gap: 30px; flex-wrap: wrap; margin-bottom: 64px; }
+.section { padding: 170px 0; }
+.section__head { display: flex; align-items: flex-end; justify-content: space-between; gap: 30px 60px; flex-wrap: wrap; margin-bottom: 80px; }
 .gallery { position: relative; }
 .gallery { --hl-w: min(86vw, 1000px); }
 .gallery__track {
@@ -30,7 +30,7 @@
 .hl.is-current .hl__art svg { transform: none; }
 .hl__big { position: absolute; left: 48px; bottom: 44px; font: 800 clamp(5rem, 14vw, 11rem)/.95 var(--font-display); letter-spacing: -0.035em; }
 .hl__big small { font-size: .32em; letter-spacing: -0.02em; margin-left: .1em; }
-.gallery__controls { display: flex; justify-content: center; align-items: center; gap: 14px; margin-top: 34px; padding: 0 var(--gutter); }
+.gallery__controls { display: flex; justify-content: center; align-items: center; gap: 14px; margin-top: 44px; padding: 0 var(--gutter); }
 .dots { display: flex; gap: 10px; align-items: center; height: 56px; padding: 0 22px; border-radius: 980px; background: #2a2a2d; }
 .dots button { width: 8px; height: 8px; padding: 0; border: 0; border-radius: 4px; background: rgba(255,255,255,.42); position: relative; overflow: hidden; transition: width 420ms var(--ease-drawer); }
 .dots button[aria-current="true"] { width: 48px; }

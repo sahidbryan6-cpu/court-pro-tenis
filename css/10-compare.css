@@ -22,9 +22,9 @@
 .meter-dots i { width: 22px; height: 6px; border-radius: 3px; background: rgba(255,255,255,.16); }
 .meter-dots i.on { background: var(--grad-volt); }
 @media (max-width: 860px) {
-  .compare { grid-template-columns: 1fr; gap: 56px; max-width: 420px; margin: 0 auto; }
+  .compare { grid-template-columns: 1fr; gap: 72px; max-width: 420px; margin: 0 auto; }
   .cmp { border-left: 0; padding: 0; }
-  .cmp + .cmp { border-top: 1px solid var(--hairline); padding-top: 56px; }
+  .cmp + .cmp { border-top: 1px solid var(--hairline); padding-top: 72px; }
   .cmp__specs { grid-template-columns: 1fr 1fr; gap: 26px 12px; }
   .cmp__specs li:last-child { grid-column: 1 / -1; }
 }

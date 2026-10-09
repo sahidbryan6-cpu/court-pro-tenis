@@ -45,8 +45,12 @@
   .hero__cta { margin-top: 8px; padding-bottom: 56px; }
 
   /* sections breathe a little less on small screens */
-  .section { padding: 84px 0; }
-  .section__head { margin-bottom: 28px; }
+  .section { padding: 112px 0; }
+  .section__head { margin-bottom: 44px; gap: 18px; }
+  .bento { gap: 18px; }
+  .tile { padding: 34px 28px; }
+  .hero__tag { margin-top: 16px; }
+  .hero__stage { margin-top: 26px; }
 
   /* gallery dots: 8px dots inside a 32px tap target */
   .dots { gap: 4px; padding: 0 14px; height: 52px; }

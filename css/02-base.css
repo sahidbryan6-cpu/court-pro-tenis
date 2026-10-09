@@ -8,7 +8,7 @@ html { -webkit-text-size-adjust: 100%; scroll-padding-top: calc(var(--local-h) +
 html, body { margin: 0; overflow-x: clip; }
 body {
   background: #000; color: var(--text);
-  font-family: var(--font); font-size: 1.0625rem; line-height: 1.47; letter-spacing: -0.022em;
+  font-family: var(--font); font-size: 1.0625rem; line-height: 1.52; letter-spacing: -0.022em;
   -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
   font-optical-sizing: auto; -webkit-tap-highlight-color: transparent;
 }
@@ -34,7 +34,7 @@ p, li { text-wrap: pretty; }
 ::selection { background: #c6ff3d; color: #000; }
 @media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
 svg use { shape-rendering: geometricPrecision; }
-.subhead { font-size: clamp(1.125rem, 1.6vw, 1.3rem); line-height: 1.42; color: var(--text-2); margin: 18px 0 0; max-width: 46ch; font-weight: 500; letter-spacing: -0.02em; }
+.subhead { font-size: clamp(1.125rem, 1.6vw, 1.3rem); line-height: 1.5; color: var(--text-2); margin: 24px 0 0; max-width: 46ch; font-weight: 500; letter-spacing: -0.02em; }
 .subhead strong { color: var(--text); font-weight: 600; }
 
 [data-reveal] { opacity: 0; transform: translateY(28px); transition: opacity 900ms var(--ease-out), transform 1000ms var(--ease-out); transition-delay: var(--d, 0ms); }
