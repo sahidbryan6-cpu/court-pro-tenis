@@ -16,8 +16,8 @@ function openQuickLook(id) {
   $("#ql-price").innerHTML = `${money(p.price)}${sale ? `<s>${money(p.compare)}</s>` : ""}`;
   $("#ql-msi").textContent = `o ${money(Math.ceil(p.price / 3))}/mes en 3 meses sin intereses*`;
   $("#ql-img").innerHTML = shoeSVG(p.colors, 0, "big");
-  $("#ql-thumbs").innerHTML = [0, 1, 2].map(a => `<button class="press" data-angle="${a}" aria-pressed="${a === 0}" aria-label="Vista ${a + 1}">${shoeSVG(p.colors, a)}</button>`).join("");
-  $("#ql-sizes").innerHTML = SIZES.map((s, i) => `<button type="button" data-size="${s}" aria-pressed="false" ${!p.available || (p.id + i) % 7 === 0 ? "disabled" : ""}>${s}</button>`).join("");
+  $("#ql-thumbs").innerHTML = [0, 1, 2].map(a => `<button class="press" style="--k:${a}" data-angle="${a}" aria-pressed="${a === 0}" aria-label="Vista ${a + 1}">${shoeSVG(p.colors, a)}</button>`).join("");
+  $("#ql-sizes").innerHTML = SIZES.map((s, i) => `<button type="button" style="--k:${i + 3}" data-size="${s}" aria-pressed="false" ${!p.available || (p.id + i) % 7 === 0 ? "disabled" : ""}>${s}</button>`).join("");
   const add = $("#ql-add");
   add.disabled = !p.available; add.textContent = p.available ? "Agregar a la bolsa" : "Agotado";
   openOverlay($("#quick-look"));

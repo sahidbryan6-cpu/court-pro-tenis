@@ -23,7 +23,7 @@
 <link rel="stylesheet" href="css/12-overlays.css?v=a311b778">
 <link rel="stylesheet" href="css/13-accessibility.css?v=c4e3147f">
 <link rel="stylesheet" href="css/14-mobile.css?v=ff8a73a4">
-<link rel="stylesheet" href="css/15-motion.css?v=aaeb0e1f">
+<link rel="stylesheet" href="css/15-motion.css?v=b7f46960">
 </head>
 <body>
 
@@ -158,19 +158,27 @@
 <main id="top">
   <!-- ============ HERO ============ -->
   <section class="hero dark" id="hero" aria-label="Court Pro">
+    <!-- decorative court in perspective; lines draw themselves once on load -->
+    <svg class="hero__court" viewBox="0 0 1200 500" aria-hidden="true" fill="none">
+      <path pathLength="1" d="M420 120 L780 120 L1140 480 L60 480 Z"/>
+      <path pathLength="1" d="M465 120 L195 480 M735 120 L1005 480"/>
+      <path pathLength="1" d="M276 264 L924 264"/>
+      <path pathLength="1" d="M411 192 L789 192 M298 343 L902 343"/>
+      <path pathLength="1" d="M600 192 L600 343"/>
+    </svg>
     <div class="hero__text" id="hero-text">
-      <p class="hero__eyebrow">Calzado de tennis · Hombre</p>
-      <h1 class="hero__title grad-metal">Court Pro</h1>
-      <p class="hero__tag">Velocidad. Control. <span class="grad-volt">Sin límites.</span></p>
+      <p class="hero__eyebrow" data-enter style="--e:0">Calzado de tennis · Hombre</p>
+      <h1 class="hero__title grad-metal" data-enter style="--e:1">Court Pro</h1>
+      <p class="hero__tag" data-enter style="--e:2">Velocidad. Control. <span class="grad-volt">Sin límites.</span></p>
     </div>
     <div class="hero__stage" id="hero-stage"></div>
     <div class="hero__cta">
-      <div class="hero__cta-row">
+      <div class="hero__cta-row" data-enter style="--e:5">
         <a href="#catalogo" class="btn press">Comprar</a>
         <a href="#destacado" class="link" style="font-size:17px">Descubre más ›</a>
       </div>
-      <div class="hero__price">Desde $1,399 o 3 meses sin intereses*</div>
-      <div class="hero__chips">
+      <div class="hero__price" data-enter style="--e:6">Desde $1,399 o 3 meses sin intereses*</div>
+      <div class="hero__chips" data-enter style="--e:7">
         <span><svg viewBox="0 0 16 16"><path d="M2 12c2-5 10-5 12 0"/><path d="M4 12h8"/></svg>Cancha dura y arcilla</span>
         <span><svg viewBox="0 0 16 16"><path d="M8 2v4M8 6l3 7H5z"/></svg>Desde 298 g</span>
         <span><svg viewBox="0 0 16 16"><path d="M3 8a5 5 0 019-3l1 1M13 8a5 5 0 01-9 3l-1-1"/><path d="M13 3v3h-3M3 13v-3h3"/></svg>Cambio de talla gratis</span>
@@ -217,18 +225,21 @@
         </article>
 
         <article class="tile" data-reveal style="--d:80ms">
+          <svg class="tile__icon" viewBox="0 0 32 32" aria-hidden="true"><path d="M7 25C9 13 17 6 27 5c-1 10-8 18-20 20z"/><path d="M7 25l11-11"/></svg>
           <p class="tile__label">Ligereza <span>que no sacrifica soporte.</span></p>
           <div class="tile__num grad-volt"><span data-count="298">0</span><small>g</small></div>
           <div class="tile__foot">Peso promedio en talla 27 MX.</div>
         </article>
 
         <article class="tile" data-reveal style="--d:140ms">
+          <svg class="tile__icon" viewBox="0 0 32 32" aria-hidden="true"><path d="M18 3L7 18h8l-2 11 12-16h-8z"/></svg>
           <p class="tile__label">Retorno de energía <span>en cada arranque.</span></p>
           <div class="tile__num"><span data-count="62">0</span><small>%</small></div>
           <div class="tile__foot">Espuma reactiva frente a EVA estándar.</div>
         </article>
 
         <article class="tile tile--wide" data-reveal style="--d:80ms">
+          <svg class="tile__icon" viewBox="0 0 32 32" aria-hidden="true"><rect x="4" y="7" width="24" height="18" rx="2"/><path d="M16 7v18M4 16h24"/></svg>
           <p class="tile__label">Una suela para cada superficie. <span>Elige la tuya y juega con confianza.</span></p>
           <div class="surfaces">
             <span><i style="background:#3d7dff"></i>Cancha dura</span>
@@ -239,12 +250,14 @@
         </article>
 
         <article class="tile tile--wide" data-reveal style="--d:80ms">
+          <svg class="tile__icon" viewBox="0 0 32 32" aria-hidden="true"><rect x="3" y="11" width="26" height="10" rx="2"/><path d="M8 11v4M13 11v6M18 11v4M23 11v6"/></svg>
           <p class="tile__label">Tallas <span>completas y medias.</span></p>
           <div class="tile__num tile__num--fit">25<span style="color:var(--text-3)">–</span>30</div>
           <div class="tile__foot">Cambio de talla sin costo en 30 días.</div>
         </article>
 
         <article class="tile tile--wide" data-reveal style="--d:140ms">
+          <svg class="tile__icon" viewBox="0 0 32 32" aria-hidden="true"><rect x="3" y="7" width="26" height="18" rx="3"/><path d="M3 12h26M8 19h6"/></svg>
           <p class="tile__label">Paga a tu ritmo.</p>
           <div class="tile__num"><span data-count="3">0</span><small>MSI</small></div>
           <div class="tile__foot">En toda la tienda con tarjetas participantes.*</div>
@@ -542,18 +555,18 @@
 <script src="js/data.js?v=423b0c84"></script>
 <script src="js/helpers.js?v=4dae0936"></script>
 <script src="js/scroll-engine.js?v=88936a72"></script>
-<script src="js/hero.js?v=dee31bdb"></script>
+<script src="js/hero.js?v=8650043c"></script>
 <script src="js/gallery.js?v=12829510"></script>
 <script src="js/reveals.js?v=2a1b0a97"></script>
-<script src="js/anatomy.js?v=f465e91b"></script>
+<script src="js/anatomy.js?v=c2c1ce4f"></script>
 <script src="js/story.js?v=8d605f24"></script>
 <script src="js/viewer.js?v=7e1127e2"></script>
-<script src="js/compare.js?v=84cb1399"></script>
+<script src="js/compare.js?v=14cb7fbb"></script>
 <script src="js/nav.js?v=9f410fb9"></script>
 <script src="js/filters.js?v=698afdfd"></script>
 <script src="js/products.js?v=f9b420ec"></script>
 <script src="js/overlays.js?v=7339bf75"></script>
-<script src="js/quick-look.js?v=11718836"></script>
+<script src="js/quick-look.js?v=6dbe9fbe"></script>
 <script src="js/bag.js?v=a27c28a0"></script>
 <script src="js/search.js?v=25735a7e"></script>
 <script src="js/motion.js?v=1fd5d404"></script>

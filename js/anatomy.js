@@ -17,6 +17,11 @@
   const layers = [up, mid, out];
   const leads = [0, 1, 2].map(i => $("#anat-lead-" + i));
   const dots = [0, 1, 2].map(i => $("#anat-dot-" + i));
+  const rings = dots.map(d => {
+    const r = d.cloneNode(); r.removeAttribute("id"); r.setAttribute("class", "ring");
+    r.setAttribute("fill", "none"); r.setAttribute("stroke", d.getAttribute("fill")); r.setAttribute("stroke-width", "1.5");
+    d.parentNode.insertBefore(r, d); return r;
+  });
   const labels = $$(".anat__label", sec);
   const steps = $$(".anat__step", sec);
   const bars = steps.map(b => $("b", b));
@@ -35,7 +40,10 @@
     if (a === active) return;
     active = a;
     // a: -1 assembled intro, 0..2 one layer in focus, 3 all together
-    layers.forEach((g, i) => { g.style.opacity = a >= 0 && a <= 2 && i !== a ? ".22" : "1"; });
+    layers.forEach((g, i) => {
+      g.style.opacity = a >= 0 && a <= 2 && i !== a ? ".22" : "1";
+      g.classList.toggle("is-focus", i === a);       // lifts slightly (css: scale, transitioned)
+    });
     steps.forEach((b, i) => b.setAttribute("aria-current", String(i === a)));
     glow.style.setProperty("--glow", a >= 0 && a <= 2 ? GLOW[a] : "rgba(198,255,61,.14)");
     caption.innerHTML = a >= 0 && a <= 2
@@ -59,6 +67,10 @@
     for (let i = 0; i < 3; i++) {
       const l = clamp((p - START[i]) / SPAN);
       leads[i].style.strokeDashoffset = String(1 - l);
+      labels[i].classList.toggle("is-shown", l > 0.55);          // label contents cascade in (css)
+      const ring = rings[i];                                    // one ripple when the line lands
+      if (l >= 1 && !ring.classList.contains("go")) ring.classList.add("go");
+      else if (l < 0.9) ring.classList.remove("go");
       dots[i].style.opacity = l > 0.02 ? "1" : "0";
       const lab = labels[i], dx = (1 - ease(l)) * (i === 1 ? -16 : 16);
       lab.style.opacity = String(l);

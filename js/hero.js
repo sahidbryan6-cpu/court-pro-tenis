@@ -15,8 +15,9 @@ if (!reduceMotion.matches) {
     text.style.transform = `translate3d(0, ${(p * -90).toFixed(2)}px, 0) scale(${(1 - p * 0.08).toFixed(4)})`;
     text.style.opacity = clamp(1 - p * 1.8).toFixed(3);
     stage.style.transform = `translate3d(0, ${(p * -60).toFixed(2)}px, 0) rotate(${(-6 + p * 10).toFixed(3)}deg) scale(${(1 + p * 0.12).toFixed(4)})`;
+    hero.style.setProperty("--hp", p.toFixed(4));   // glow + court drift slower than the content (depth)
   }, 90);
+  // eyebrow → title → tag cascade in CSS ([data-enter], css/15-motion.css); the shoe glides in right after
   stage.animate([{ opacity: 0, transform: "translate3d(18%, 30px, 0) rotate(-14deg) scale(.92)" }, { opacity: 1, transform: "translate3d(0,0,0) rotate(-6deg) scale(1)" }],
-    { duration: 1400, easing: "cubic-bezier(0.23, 1, 0.32, 1)" });
-  text.animate([{ opacity: 0, transform: "translateY(24px)" }, { opacity: 1, transform: "none" }], { duration: 1000, easing: "cubic-bezier(0.23, 1, 0.32, 1)" });
+    { duration: 1500, delay: 320, easing: "cubic-bezier(0.23, 1, 0.32, 1)", fill: "backwards" });
 }

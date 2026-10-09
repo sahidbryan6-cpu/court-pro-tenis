@@ -6,7 +6,7 @@
    ========================================================= */
 $("#compare").innerHTML = COMPARE.map((c, i) => {
   const p = byId(c.id);
-  const meter = n => `<span class="meter-dots">${[1, 2, 3, 4, 5].map(k => `<i class="${k <= n ? "on" : ""}"></i>`).join("")}</span>`;
+  const meter = n => `<span class="meter-dots">${[1, 2, 3, 4, 5].map(k => `<i class="${k <= n ? "on" : ""}" style="--k:${k}"></i>`).join("")}</span>`;
   return `<article class="cmp" data-reveal style="--d:${i * 100}ms">
     <div class="cmp__img">${shoeSVG(p.colors)}</div>
     <div class="cmp__tag">${c.tag}</div>
