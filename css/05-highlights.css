@@ -4,7 +4,7 @@
    HIGHLIGHTS carousel
    ========================================================= */
 .section { padding: 140px 0; }
-.section__head { display: flex; align-items: flex-end; justify-content: space-between; gap: 30px; flex-wrap: wrap; margin-bottom: 50px; }
+.section__head { display: flex; align-items: flex-end; justify-content: space-between; gap: 30px; flex-wrap: wrap; margin-bottom: 64px; }
 .gallery { position: relative; }
 .gallery { --hl-w: min(86vw, 1000px); }
 .gallery__track {

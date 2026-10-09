@@ -87,6 +87,27 @@
   .toast { bottom: calc(16px + env(safe-area-inset-bottom)); }
 }
 
+/* =========================================================
+   Narrow phones: one product per row
+   Two columns leave ~170px per card — names wrap into 3 lines and the shoe is tiny.
+   One wide card per row shows the product big and keeps every line intact.
+   ========================================================= */
+@media (max-width: 560px) {
+  .grid, .grid[data-view="compact"] { grid-template-columns: 1fr; gap: 18px; }
+  .card__media { aspect-ratio: 16 / 10; }
+  .card__shoe { width: 70%; }
+  .card__body { padding: 0 22px 24px; }
+  .card__title { font-size: 21px; margin: 4px 0 6px; }
+  .card__price { font-size: 16px; }
+  .card__colors { margin: 12px 0 14px; }
+  .promo { grid-column: 1 / -1; padding: 30px 24px; }
+
+  /* catalog head and toolbar: a little more air */
+  .catalog__head { padding-top: 96px; }
+  .toolbar__inner { min-height: 64px; }
+  .grid-section { padding-top: 20px; }
+}
+
 /* very short phones (iPhone SE class) */
 @media (max-width: 760px) and (max-height: 700px) {
   .anat__head .headline { font-size: 1.85rem; }

@@ -79,7 +79,8 @@ function renderGrid(list) {
   const grid = $("#grid");
   $("#count").textContent = `${list.length} artículo${list.length === 1 ? "" : "s"}`;
   const cards = slice.map(p => cardHTML(p));
-  if (cards.length > 6) cards.splice(5, 0, PROMO_HTML);
+  // after the 4th card it closes complete rows for 1, 2, 3 and 4 columns (no lonely card next to a gap)
+  if (cards.length > 4) cards.splice(4, 0, PROMO_HTML);
   grid.innerHTML = slice.length ? cards.join("") : `
     <div class="empty"><h3>Sin resultados.</h3><p>Prueba con menos filtros o con otra búsqueda.</p><button class="btn press" data-clear-all>Borrar filtros</button></div>`;
   observeCards(grid);
