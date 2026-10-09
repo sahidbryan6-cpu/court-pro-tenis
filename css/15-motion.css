@@ -1,0 +1,64 @@
+/* 15-motion.css — Signature motion: headline word reveals, hero shine, reading progress,
+   local-nav indicator, gallery focus, card tilt glare, story blur crossfade, fly-to-bag.
+   Everything animates transform/opacity only. Reduced motion is honoured at the bottom. */
+
+/* ---------- Headlines: words rise out of a mask, staggered (js/motion.js splits them) ---------- */
+.split-word { display: inline-block; overflow: hidden; vertical-align: top; padding-bottom: .14em; margin-bottom: -.14em; }
+.split-word > span { display: inline-block; transform: translate3d(0, 108%, 0); transition: transform 1000ms var(--ease-out); transition-delay: calc(var(--i, 0) * 60ms + 80ms); }
+.split.is-in .split-word > span, .is-in .split .split-word > span { transform: none; }
+
+/* ---------- Hero: a single light sweep across the metallic title ---------- */
+.hero__title.grad-metal {
+  background-image: linear-gradient(100deg, transparent 38%, rgba(255,255,255,.95) 50%, transparent 62%), var(--grad-metal);
+  background-size: 260% 100%, 100% 100%;
+  background-position: 160% 0, 0 0;
+  background-repeat: no-repeat;
+  animation: title-shine 2.2s var(--ease-in-out) .9s 1 both;
+}
+@keyframes title-shine { to { background-position: -60% 0, 0 0; } }
+
+/* ---------- Reading progress under the local nav ---------- */
+.scroll-progress { position: absolute; left: 0; right: 0; bottom: -1px; height: 2px; background: var(--grad-volt); transform-origin: left; transform: scaleX(0); pointer-events: none; will-change: transform; }
+
+/* ---------- Local nav: an underline that glides to the section in view ---------- */
+.localnav__links { position: relative; }
+.localnav__indicator { position: absolute; left: 0; bottom: -9px; width: 1px; height: 2px; border-radius: 1px; background: #f5f5f7; transform-origin: left; opacity: 0; pointer-events: none; transition: transform 500ms var(--ease-drawer), opacity 250ms ease; }
+
+/* ---------- Gallery: the current slide is in focus, the copy enters in sequence ---------- */
+.hl { transition: opacity 600ms var(--ease-out); }
+.hl:not(.is-current) { opacity: .45; }
+.hl__copy > * { transition: opacity 600ms var(--ease-out), transform 800ms var(--ease-out); }
+.hl:not(.is-current) .hl__copy > * { opacity: 0; transform: translate3d(0, 14px, 0); transition-duration: 200ms; }
+.hl.is-current .hl__copy > :nth-child(1) { transition-delay: 120ms; }
+.hl.is-current .hl__copy > :nth-child(2) { transition-delay: 200ms; }
+.hl.is-current .hl__copy > :nth-child(3) { transition-delay: 280ms; }
+
+/* ---------- Product cards: 3D tilt + glare that follows the pointer (mouse only) ---------- */
+@media (hover: hover) and (pointer: fine) {
+  .card::before {
+    content: ""; position: absolute; inset: 0; z-index: 1; border-radius: inherit; pointer-events: none;
+    background: radial-gradient(260px circle at var(--gx, 50%) var(--gy, 0%), rgba(255,255,255,.09), transparent 62%);
+    opacity: 0; transition: opacity 300ms ease;
+  }
+  .card:hover::before { opacity: 1; }
+  .card.is-tilting { transition: transform 140ms linear; }
+}
+
+/* ---------- Story: steps change with a soft blur crossfade ---------- */
+.story__step { filter: blur(8px); transition: opacity 650ms var(--ease-out), transform 750ms var(--ease-out), filter 650ms var(--ease-out); }
+.story__step.is-active { filter: none; }
+
+/* ---------- Fly-to-bag ghost ---------- */
+.fly-shoe { position: fixed; z-index: 80; margin: 0; pointer-events: none; will-change: transform, opacity; }
+
+/* ---------- Reduced motion (unless the visitor turned animations on) ---------- */
+@media (prefers-reduced-motion: reduce) {
+  :root:not(.motion-on) .split-word > span { transform: none; transition: none; }
+  :root:not(.motion-on) .hero__title.grad-metal { animation: none; background-position: 160% 0, 0 0; }
+  :root:not(.motion-on) .story__step { filter: none; }
+  :root:not(.motion-on) .hl:not(.is-current) .hl__copy > * { opacity: 1; transform: none; }
+}
+/* touch: blur filters on large text blocks are costly on phones */
+@media (hover: none) and (pointer: coarse) {
+  .story__step { filter: none; }
+}

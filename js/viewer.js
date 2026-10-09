@@ -16,29 +16,45 @@ function setSegmented(seg, activeBtn) {
    ========================================================= */
 (function viewer() {
   const stage = $("#viewer-stage"), sw = $("#viewer-swatches"), seg = $("#viewer-angles");
-  let ci = 0, angle = 0, swapT;
+  let ci = 0, angle = 0, token = 0;
   sw.innerHTML = COLORWAYS.map((c, i) => `<button class="swatch press" style="--c:${c.c[0]};--c2:${c.c[1]}" data-name="${c.name}" aria-label="${c.name}" aria-pressed="${i === 0}"><span></span></button>`).join("");
-  function render(animated) {
+  // Directional swap: the current shoe leaves toward one side and the new one arrives from the other,
+  // so moving right through the swatches feels like moving along a shelf. Rapid clicks cancel cleanly.
+  function render(animated, dir = 1) {
     const c = COLORWAYS[ci];
     $("#viewer-name").innerHTML = `${c.name}<span>${c.note}</span>`;
     $(".viewer").style.setProperty("--tint", c.c[1]);
-    const paint = () => { stage.innerHTML = shoeSVG(c.c, angle); };
+    const paint = () => { stage.innerHTML = shoeSVG(c.c, angle); return $("svg", stage); };
     if (!animated || reduceMotion.matches) return paint();
-    clearTimeout(swapT);
-    stage.classList.add("is-swapping");
-    swapT = setTimeout(() => { paint(); requestAnimationFrame(() => stage.classList.remove("is-swapping")); }, 220);
+    const my = ++token, old = $("svg", stage);
+    const enter = () => {
+      if (my !== token) return;
+      paint().animate([
+        { transform: `translate3d(${70 * dir}px, 0, 0) rotate(${5 * dir}deg) scale(.96)`, opacity: 0 },
+        { transform: "none", opacity: 1 },
+      ], { duration: 560, easing: "cubic-bezier(0.23, 1, 0.32, 1)" });
+    };
+    if (!old) return enter();
+    old.getAnimations().forEach(a => a.cancel());
+    old.animate([
+      { transform: "none", opacity: 1 },
+      { transform: `translate3d(${-60 * dir}px, 0, 0) rotate(${-4 * dir}deg) scale(.96)`, opacity: 0 },
+    ], { duration: 200, easing: "cubic-bezier(0.55, 0, 1, 0.45)", fill: "forwards" }).finished.then(enter, enter);
   }
   sw.addEventListener("click", e => {
     const b = e.target.closest(".swatch"); if (!b) return;
     const i = $$(".swatch", sw).indexOf(b); if (i === ci) return;
+    const dir = i > ci ? 1 : -1;
     ci = i; $$(".swatch", sw).forEach((x, k) => x.setAttribute("aria-pressed", String(k === i)));
-    render(true);
+    render(true, dir);
   });
   seg.addEventListener("click", e => {
     const b = e.target.closest("button[data-angle]"); if (!b) return;
-    angle = Number(b.dataset.angle);
+    const next = Number(b.dataset.angle); if (next === angle) return;
+    const dir = next > angle ? 1 : -1;
+    angle = next;
     setSegmented(seg, b);
-    render(true);
+    render(true, dir);
   });
   render(false);
 })();

@@ -36,5 +36,6 @@ $("#ql-sizes").addEventListener("click", e => {
 });
 $("#ql-add").addEventListener("click", () => {
   if (!ql.size) { const s = $("#ql-sizes"); s.classList.remove("shake"); void s.offsetWidth; s.classList.add("shake"); return; }
+  flyToBag($("#ql-img svg"));   // js/motion.js — the shoe arcs into the bag icon
   addToBag(ql.p.id, ql.size); closeOverlay();
 });
