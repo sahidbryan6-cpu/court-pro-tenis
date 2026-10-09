@@ -10,7 +10,15 @@ const money = n => "$" + n.toLocaleString("es-MX", { maximumFractionDigits: 0 })
 const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
 const cap = v => v[0] + v.slice(1).toLowerCase();
 const clamp = (v, a = 0, b = 1) => Math.min(b, Math.max(a, v));
-const reduceMotion = matchMedia("(prefers-reduced-motion: reduce)");
+// Reduced motion follows the system setting ("Reducir movimiento" / "Quitar animaciones" /
+// battery savers), unless the visitor explicitly turned animations back on (stored per browser).
+// The <html class="motion-on"> flag also switches off the reduced-motion CSS (13-accessibility.css).
+const systemReducedMotion = matchMedia("(prefers-reduced-motion: reduce)");
+const MOTION_KEY = "court-pro:motion";
+let motionOverride = false;
+try { motionOverride = localStorage.getItem(MOTION_KEY) === "on"; } catch {}
+if (motionOverride) document.documentElement.classList.add("motion-on");
+const reduceMotion = { get matches() { return systemReducedMotion.matches && !motionOverride; } };
 const PRODUCT_MAP = new Map(PRODUCTS.map(p => [p.id, p]));
 const byId = id => PRODUCT_MAP.get(id);
 
