@@ -1,0 +1,28 @@
+/* 04-hero.css — Hero: giant title, shoe stage with reflection, CTAs, chips and scroll cue. */
+
+/* =========================================================
+   HERO
+   ========================================================= */
+.hero { position: relative; overflow: hidden; min-height: calc(100svh - var(--local-h)); display: flex; flex-direction: column; align-items: center; padding: 70px 0 0; text-align: center; }
+.hero::before {
+  content: ""; position: absolute; left: 50%; top: 58%; width: min(1200px, 140vw); aspect-ratio: 1.6; transform: translate(-50%, -50%);
+  background: radial-gradient(closest-side, rgba(198,255,61,.16), rgba(61,214,255,.07) 55%, transparent 75%);
+  pointer-events: none;
+}
+.hero__text { position: relative; z-index: 2; will-change: transform, opacity; padding: 0 var(--gutter); }
+.hero__eyebrow { font-size: clamp(1.1rem, 1.8vw, 1.5rem); font-weight: 600; letter-spacing: -0.02em; margin: 0 0 6px; color: #f5f5f7; }
+.hero__title { font: 800 clamp(4.2rem, 13vw, 10.5rem)/.98 var(--font-display); letter-spacing: -0.035em; margin: 0; padding-bottom: .06em; }
+.hero__tag { font: 600 clamp(1.4rem, 3vw, 2.4rem)/1.15 var(--font-display); letter-spacing: -0.022em; margin: 14px 0 0; }
+.hero__stage { position: relative; z-index: 1; width: min(1000px, 92vw); margin: 10px auto 0; will-change: transform; }
+.hero__stage svg { width: 100%; filter: drop-shadow(0 50px 60px rgba(0,0,0,.6)); }
+.hero__cta { position: relative; z-index: 2; display: flex; flex-direction: column; align-items: center; gap: 12px; padding: 0 var(--gutter) 70px; margin-top: 18px; }
+.hero__cta-row { display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 14px 24px; }
+.hero__price { font-size: 17px; color: #a1a1a6; }
+.hero__chips { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin-top: 8px; }
+.hero__chips span { display: inline-flex; align-items: center; gap: 7px; height: 32px; padding: 0 14px; border-radius: 980px; font-size: 13px; font-weight: 500; color: #d2d2d7; box-shadow: inset 0 0 0 1px rgba(255,255,255,.14); }
+.hero__chips svg { width: 14px; height: 14px; fill: none; stroke: var(--volt); stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.hero__scroll { margin-top: 26px; width: 22px; height: 34px; border-radius: 11px; box-shadow: inset 0 0 0 1.5px rgba(255,255,255,.3); position: relative; }
+.hero__scroll i { position: absolute; left: 50%; top: 7px; width: 3px; height: 7px; margin-left: -1.5px; border-radius: 2px; background: #f5f5f7; animation: cue 1.8s var(--ease-in-out) 3 both; }
+@keyframes cue { 0% { transform: translateY(0); opacity: 0; } 30% { opacity: 1; } 70% { transform: translateY(10px); opacity: 0; } 100% { transform: translateY(0); opacity: 1; } }
+.hero__reflect { display: block; width: 100%; margin: -9.5% 0 -40%; transform: scaleY(-1); opacity: .1; pointer-events: none; filter: none !important;
+  -webkit-mask-image: linear-gradient(to top, #000 0%, transparent 24%); mask-image: linear-gradient(to top, #000 0%, transparent 24%); }

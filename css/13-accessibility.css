@@ -1,0 +1,27 @@
+/* 13-accessibility.css — Reduced motion, reduced transparency and high contrast preferences. */
+
+/* =========================================================
+   Accessibility preferences
+   ========================================================= */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; }
+  [data-reveal], .reveal { opacity: 1 !important; transform: none !important; }
+  .hero__text, .hero__stage, .story__shoe { transform: none !important; opacity: 1 !important; }
+  .story__step { transition: opacity 200ms ease; transform: none; }
+  .hl__art svg { transition: none; }
+  .anat { height: auto; }
+  .anat__sticky { position: relative; top: 0; height: auto; padding: 100px var(--gutter); }
+  .anat__head { position: relative; top: 0; left: auto; right: auto; opacity: 1 !important; transform: none !important; }
+  .card, .card__shoe, .sheet, .toast, .modal__panel { transition-property: opacity, background-color !important; }
+  .card:hover, .card:hover .card__shoe { transform: none !important; }
+  .sheet, .toast { transition-duration: 200ms !important; }
+}
+@media (prefers-reduced-transparency: reduce) {
+  .localnav, .toolbar, .toast, .dots, .round-btn { -webkit-backdrop-filter: none; backdrop-filter: none; }
+  .localnav { background: #000; }
+  .toolbar, .toast { background: var(--bg); }
+}
+@media (prefers-contrast: more) {
+  :root { --hairline: rgba(0,0,0,.5); --text-2: #3a3a3c; }
+  .card, .tile { box-shadow: inset 0 0 0 1px var(--hairline); }
+}

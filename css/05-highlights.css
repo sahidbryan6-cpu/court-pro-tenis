@@ -1,0 +1,54 @@
+/* 05-highlights.css — 'Lo más destacado' carousel: slides, dots, play/pause and paddles. */
+
+/* =========================================================
+   HIGHLIGHTS carousel
+   ========================================================= */
+.section { padding: 140px 0; }
+.section__head { display: flex; align-items: flex-end; justify-content: space-between; gap: 30px; flex-wrap: wrap; margin-bottom: 50px; }
+.gallery { position: relative; }
+.gallery { --hl-w: min(86vw, 1000px); }
+.gallery__track {
+  display: flex; gap: 24px; overflow-x: auto; scroll-snap-type: x mandatory;
+  padding: 0 calc((100% - var(--hl-w)) / 2);
+  scrollbar-width: none; overscroll-behavior-x: contain;
+}
+.gallery__track::-webkit-scrollbar { display: none; }
+.hl {
+  position: relative; flex: none; scroll-snap-align: center; overflow: hidden;
+  width: var(--hl-w); height: clamp(500px, 58vw, 680px); border-radius: var(--radius-xl);
+  background: var(--hl-bg, #141416); color: #f5f5f7; contain: layout paint style;
+}
+.hl__copy { position: absolute; left: 0; right: 0; top: 0; padding: 44px 48px; z-index: 2; max-width: 620px; }
+.hl__kicker { display: inline-flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 600; letter-spacing: .02em; text-transform: uppercase; color: rgba(245,245,247,.72); margin-bottom: 12px; }
+.hl__kicker i { width: 6px; height: 6px; border-radius: 50%; background: var(--volt); }
+.hl__index { position: absolute; right: 30px; top: 30px; z-index: 2; font-size: 12px; font-weight: 600; color: rgba(245,245,247,.6); font-variant-numeric: tabular-nums; letter-spacing: .04em; }
+.hl { box-shadow: inset 0 0 0 1px rgba(255,255,255,.06); }
+.hl__copy h3 { font: 700 clamp(1.6rem, 3vw, 2.5rem)/1.08 var(--font-display); letter-spacing: -0.022em; margin: 0; }
+.hl__copy p { font-size: clamp(1rem, 1.4vw, 1.2rem); color: rgba(245,245,247,.78); margin: 12px 0 0; max-width: 38ch; line-height: 1.4; font-weight: 500; letter-spacing: -0.02em; }
+.hl__art { position: absolute; inset: auto 0 0 0; display: flex; justify-content: center; align-items: flex-end; padding: 0 30px 40px; }
+.hl__art svg { width: min(820px, 92%); transition: transform 1200ms var(--ease-out); transform: translateX(8%) rotate(-6deg) scale(.96); filter: drop-shadow(0 30px 40px rgba(0,0,0,.5)); }
+.hl.is-current .hl__art svg { transform: none; }
+.hl__big { position: absolute; left: 48px; bottom: 44px; font: 800 clamp(5rem, 14vw, 11rem)/.95 var(--font-display); letter-spacing: -0.035em; }
+.hl__big small { font-size: .32em; letter-spacing: -0.02em; margin-left: .1em; }
+.gallery__controls { display: flex; justify-content: center; align-items: center; gap: 14px; margin-top: 34px; padding: 0 var(--gutter); }
+.dots { display: flex; gap: 10px; align-items: center; height: 56px; padding: 0 22px; border-radius: 980px; background: #2a2a2d; }
+.dots button { width: 8px; height: 8px; padding: 0; border: 0; border-radius: 4px; background: rgba(255,255,255,.42); position: relative; overflow: hidden; transition: width 420ms var(--ease-drawer); }
+.dots button[aria-current="true"] { width: 48px; }
+.dots button i { position: absolute; inset: 0; background: #f5f5f7; transform-origin: left; transform: scaleX(0); }
+.dots button[aria-current="true"] i { animation: dotfill var(--auto, 5000ms) linear forwards; }
+.gallery.is-paused .dots button i { animation-play-state: paused; }
+.dots button[aria-current="true"].is-static i { animation: none; transform: scaleX(1); }
+@keyframes dotfill { to { transform: scaleX(1); } }
+.round-btn { width: 56px; height: 56px; border-radius: 50%; border: 0; background: #2a2a2d; color: #f5f5f7; display: inline-flex; align-items: center; justify-content: center; flex: none; }
+.round-btn:hover { background: #3a3a3e; }
+.round-btn svg { width: 18px; height: 18px; fill: currentColor; }
+.round-btn[disabled] { opacity: .35; cursor: default; }
+.paddles { display: flex; gap: 14px; }
+@media (max-width: 760px) {
+  .section { padding: 100px 0; }
+  .section__head { margin-bottom: 34px; }
+  .hl { height: 560px; }
+  .hl__copy { padding: 30px 26px; }
+  .hl__big { left: 26px; bottom: 30px; }
+  .paddles { display: none; }
+}

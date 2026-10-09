@@ -1,0 +1,73 @@
+/* 01-tokens.css — Design tokens: colors, fonts, easings, radii — light, dark and the always-dark product sections. */
+
+/* =========================================================
+   Tokens
+   ========================================================= */
+:root {
+  --bg: #ffffff;
+  --bg-alt: #f5f5f7;
+  --tile: #f5f5f7;
+  --tile-hover: #ededf0;
+  --text: #1d1d1f;
+  --text-2: #6e6e73;
+  --text-3: #707075;
+  --hairline: rgba(0, 0, 0, .1);
+  --accent: #0071e3;
+  --accent-hover: #0066cc;
+  --accent-text: #0066cc;
+  --sale: #bf4800;
+  --success: #1d8a3a;
+  --danger: #d70015;
+  --chrome: rgba(255, 255, 255, .72);
+  --chrome-strong: rgba(255, 255, 255, .9);
+  --scrim: rgba(0, 0, 0, .4);
+  --shadow-sm: 0 2px 12px rgba(0, 0, 0, .06);
+  --shadow-lg: 0 24px 60px rgba(0, 0, 0, .16), 0 2px 8px rgba(0, 0, 0, .05);
+
+  --volt: #c6ff3d;
+  --grad-volt: linear-gradient(90deg, #c6ff3d 0%, #5effc1 55%, #3dd6ff 100%);
+  --grad-metal: linear-gradient(180deg, #ffffff 0%, #d7d7dc 45%, #8e8e93 100%);
+
+  --font: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Inter", "Segoe UI", system-ui, sans-serif;
+  --font-display: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Inter", "Segoe UI", system-ui, sans-serif;
+
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+  --ease-drawer: cubic-bezier(0.32, 0.72, 0, 1);
+
+  --page: 1260px;
+  --gutter: 22px;
+  --radius-xl: 32px;
+  --radius-lg: 24px;
+  --radius-md: 14px;
+  --nav-h: 44px;
+  --local-h: 52px;
+}
+
+/* Catalog half follows the system theme (or the footer toggle) */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #000000; --bg-alt: #0b0b0c; --tile: #161617; --tile-hover: #1d1d1f;
+    --text: #f5f5f7; --text-2: #a1a1a6; --text-3: #86868b; --hairline: rgba(255,255,255,.14);
+    --accent-text: #2997ff; --sale: #ff9f0a; --success: #30d158; --danger: #ff453a;
+    --chrome: rgba(22,22,23,.72); --chrome-strong: rgba(22,22,23,.92); --scrim: rgba(0,0,0,.6);
+    --shadow-sm: 0 2px 12px rgba(0,0,0,.4);
+    --shadow-lg: 0 24px 60px rgba(0,0,0,.6), 0 0 0 1px rgba(255,255,255,.06);
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #000000; --bg-alt: #0b0b0c; --tile: #161617; --tile-hover: #1d1d1f;
+  --text: #f5f5f7; --text-2: #a1a1a6; --text-3: #86868b; --hairline: rgba(255,255,255,.14);
+  --accent-text: #2997ff; --sale: #ff9f0a; --success: #30d158; --danger: #ff453a;
+  --chrome: rgba(22,22,23,.72); --chrome-strong: rgba(22,22,23,.92); --scrim: rgba(0,0,0,.6);
+  --shadow-sm: 0 2px 12px rgba(0,0,0,.4);
+  --shadow-lg: 0 24px 60px rgba(0,0,0,.6), 0 0 0 1px rgba(255,255,255,.06);
+}
+
+/* Product-story sections are always dark, like a product page */
+.dark {
+  --bg: #000000; --bg-alt: #0b0b0c; --tile: #141416; --tile-hover: #1c1c1e;
+  --text: #f5f5f7; --text-2: #a1a1a6; --text-3: #86868b; --hairline: rgba(255,255,255,.14);
+  --accent-text: #2997ff; --sale: #ff9f0a; --success: #30d158;
+  background: var(--bg); color: var(--text);
+}

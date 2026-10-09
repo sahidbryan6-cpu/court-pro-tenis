@@ -1,0 +1,60 @@
+/* 07-anatomy.css — Anatomy: sticky, scroll-linked exploded view with leader lines and labels. */
+
+/* =========================================================
+   ANATOMY — sticky, scroll-linked exploded view
+   ========================================================= */
+.anat { position: relative; height: 420vh; }
+.anat__sticky {
+  position: sticky; top: var(--local-h); height: calc(100svh - var(--local-h)); overflow: hidden;
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2vh; padding: 2vh var(--gutter) 3vh;
+}
+.anat__glow { position: absolute; inset: 0; pointer-events: none; background: radial-gradient(45% 40% at 50% 55%, var(--glow, rgba(198,255,61,.16)), transparent 70%); transition: background 700ms ease; }
+/* The title floats over the top of the stage and fades out as the layers open (see anatomy.js),
+   so the stage can use nearly the full height instead of sharing it with the heading. */
+.anat__head { position: absolute; top: 4vh; left: var(--gutter); right: var(--gutter); z-index: 2; text-align: center; pointer-events: none; will-change: transform, opacity; }
+.anat__head .headline { font-size: clamp(2.2rem, 5vw, 4.2rem); }
+.anat__hint { margin-top: 10px; font-size: 14px; color: var(--text-2); display: inline-flex; align-items: center; gap: 8px; }
+.anat__hint svg { width: 14px; height: 14px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; }
+.anat__stage {
+  position: relative; flex: none;
+  /* height available = viewport − local nav − steps bar & padding (~130px); width follows the 800:440 ratio */
+  width: min(1240px, 100%, calc((100svh - var(--local-h) - 130px) * 1.818));
+  aspect-ratio: 800 / 440;
+}
+.anat__stage > svg, .anat__rig { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+.anat__rig { transform-origin: 51.25% 50%; will-change: transform; }
+.anat__rig > svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+.anat__layer { will-change: transform, opacity; transition: opacity 450ms var(--ease-out); }
+.anat__leads path { stroke-dasharray: 1; stroke-dashoffset: 1; }
+.anat__dots circle { opacity: 0; transition: opacity 200ms ease; }
+.anat__label {
+  position: absolute; width: min(250px, 21%); opacity: 0; transform: translate(12px, -50%);
+  pointer-events: none; will-change: transform, opacity;
+}
+.anat__label--left { text-align: right; }
+.anat__num { display: inline-flex; align-items: center; justify-content: center; width: 26px; height: 26px; border-radius: 50%; background: var(--c); color: #000; font-size: 13px; font-weight: 700; margin-bottom: 10px; }
+.anat__label h3 { font: 700 clamp(1.15rem, 1.8vw, 1.6rem)/1.1 var(--font-display); letter-spacing: -0.02em; margin: 0 0 6px; }
+.anat__label p { font-size: 14px; line-height: 1.42; color: var(--text-2); margin: 0 0 10px; }
+.anat__spec { display: inline-block; font-size: 13px; font-weight: 600; color: var(--c); padding: 5px 11px; border-radius: 980px; box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--c) 45%, transparent); }
+.anat__steps { position: relative; display: flex; gap: 8px; padding: 6px; border-radius: 980px; background: #1c1c1e; box-shadow: inset 0 0 0 1px rgba(255,255,255,.08); }
+.anat__step { position: relative; overflow: hidden; display: inline-flex; align-items: center; gap: 8px; height: 38px; padding: 0 16px; border: 0; border-radius: 980px; background: transparent; color: var(--text-2); font-size: 14px; font-weight: 500; transition: color 250ms ease, background-color 250ms ease; }
+.anat__step i { width: 8px; height: 8px; border-radius: 50%; background: var(--c); opacity: .5; transition: opacity 250ms ease; }
+.anat__step b { position: absolute; left: 16px; right: 16px; bottom: 6px; height: 2px; border-radius: 1px; background: var(--c); transform-origin: left; transform: scaleX(0); font-weight: 400; }
+.anat__step[aria-current="true"] { background: #2c2c2f; color: var(--text); }
+.anat__step[aria-current="true"] i { opacity: 1; }
+.anat__caption { display: none; text-align: center; min-height: 92px; max-width: 34ch; }
+.anat__caption h3 { font: 700 22px/1.15 var(--font-display); letter-spacing: -0.02em; margin: 0 0 6px; }
+.anat__caption p { font-size: 15px; color: var(--text-2); margin: 0; }
+@media (max-width: 760px) {
+  .anat__label, .anat__leads, .anat__dots { display: none; }
+  .anat__caption { display: block; }
+  .anat__head { top: 3vh; }
+  .anat__stage { width: min(100%, calc((100svh - var(--local-h) - 250px) * 1.818)); }
+  .anat__step { padding: 0 12px; font-size: 13px; }
+  .anat__step b { left: 12px; right: 12px; }
+}
+.surfaces { display: flex; flex-wrap: wrap; gap: 8px; margin-top: auto; padding-top: 26px; }
+.surfaces span { display: inline-flex; align-items: center; gap: 8px; height: 36px; padding: 0 14px; border-radius: 980px; background: rgba(255,255,255,.08); font-size: 14px; font-weight: 500; }
+.surfaces i { width: 10px; height: 10px; border-radius: 50%; }
+@media (max-width: 1000px) { .bento { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 620px) { .bento { grid-template-columns: 1fr; } .tile--hero, .tile--wide { grid-column: auto; grid-row: auto; } .tile--hero { padding: 32px 26px 24px; } }

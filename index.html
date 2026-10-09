@@ -1,0 +1,559 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#000000">
+<title>Court Pro · Calzado Tennis Hombre</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400..800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/01-tokens.css">
+<link rel="stylesheet" href="css/02-base.css">
+<link rel="stylesheet" href="css/03-nav.css">
+<link rel="stylesheet" href="css/04-hero.css">
+<link rel="stylesheet" href="css/05-highlights.css">
+<link rel="stylesheet" href="css/06-bento.css">
+<link rel="stylesheet" href="css/07-anatomy.css">
+<link rel="stylesheet" href="css/08-story.css">
+<link rel="stylesheet" href="css/09-viewer.css">
+<link rel="stylesheet" href="css/10-compare.css">
+<link rel="stylesheet" href="css/11-catalog.css">
+<link rel="stylesheet" href="css/12-overlays.css">
+<link rel="stylesheet" href="css/13-accessibility.css">
+<link rel="stylesheet" href="css/14-mobile.css">
+</head>
+<body>
+
+<!-- ============ SVG sprite: original sneaker artwork, drawn once ============ -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <radialGradient id="g-shadow"><stop offset="0" stop-color="#000" stop-opacity=".5"/><stop offset="1" stop-color="#000" stop-opacity="0"/></radialGradient>
+    <linearGradient id="g-upper" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#fff" stop-opacity=".28"/><stop offset=".42" stop-color="#fff" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".22"/>
+    </linearGradient>
+    <linearGradient id="g-mid" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#fff" stop-opacity=".35"/><stop offset=".5" stop-color="#fff" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".18"/>
+    </linearGradient>
+    <linearGradient id="g-rim" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset=".6" stop-color="#fff" stop-opacity="0"/><stop offset=".82" stop-color="#fff" stop-opacity=".2"/><stop offset="1" stop-color="#fff" stop-opacity="0"/>
+    </linearGradient>
+    <pattern id="p-mesh" width="7" height="7" patternUnits="userSpaceOnUse" patternTransform="rotate(18)">
+      <circle cx="3.5" cy="3.5" r="1" fill="#000" fill-opacity=".16"/>
+    </pattern>
+    <pattern id="p-tread" width="9" height="12" patternUnits="userSpaceOnUse" patternTransform="skewX(-20)">
+      <rect x="0" y="0" width="4.5" height="12" fill="#000" fill-opacity=".28"/>
+    </pattern>
+
+    <path id="upper-shape" d="M34 150 C24 120 28 90 46 72 C54 62 66 58 80 60 C96 62 108 72 122 74 C140 76 150 66 158 52 L170 30 C174 24 184 22 192 26 L200 34 C206 44 210 56 216 66 C250 84 300 100 340 112 C370 120 388 132 390 146 C391 150 388 152 384 152 L34 152 Z"/>
+
+    <symbol id="shoe-out" viewBox="0 0 400 220">
+      <path d="M30 172 C30 188 42 197 62 197 L350 197 C374 197 388 187 390 172 Z" style="fill:var(--s)"/>
+      <path d="M30 172 C30 188 42 197 62 197 L350 197 C374 197 388 187 390 172 Z" fill="#000" fill-opacity=".38"/>
+      <path d="M44 184 L380 184 C378 190 372 194 352 194 L62 194 C52 194 46 190 44 184 Z" fill="url(#p-tread)"/>
+    </symbol>
+
+    <symbol id="shoe-mid" viewBox="0 0 400 220">
+      <path d="M26 146 C21 158 23 170 30 177 L389 177 C396 167 396 154 389 145 C356 143 322 147 292 149 L132 149 C92 149 58 142 26 146 Z" style="fill:var(--s)"/>
+      <path d="M26 146 C21 158 23 170 30 177 L389 177 C396 167 396 154 389 145 C356 143 322 147 292 149 L132 149 C92 149 58 142 26 146 Z" fill="url(#g-mid)"/>
+      <path d="M32 163 C120 167 262 169 392 160" stroke="#000" stroke-opacity=".14" stroke-width="1.4" fill="none"/>
+      <rect x="54" y="153" width="60" height="16" rx="8" style="fill:var(--a)"/>
+      <rect x="54" y="153" width="60" height="16" rx="8" fill="url(#g-mid)"/>
+      <rect x="60" y="156" width="24" height="4" rx="2" fill="#fff" fill-opacity=".55"/>
+      <path d="M120 172 C200 175 300 173 384 167" stroke="#000" stroke-opacity=".08" stroke-width="2" fill="none"/>
+      <path d="M128 150.5 L292 150.5" stroke="#fff" stroke-opacity=".5" stroke-width="1"/>
+    </symbol>
+
+    <symbol id="shoe-up" viewBox="0 0 400 220">
+      <use href="#upper-shape" style="fill:var(--m)"/>
+      <use href="#upper-shape" style="fill:url(#p-mesh)"/>
+      <path d="M34 150 C24 120 28 92 46 74 C58 82 72 104 80 126 C84 138 86 146 86 152 L34 152 Z" fill="#000" fill-opacity=".16"/>
+      <path d="M300 104 C340 112 376 124 388 140 C391 148 388 152 382 152 L292 152 C288 132 292 116 300 104 Z" fill="#000" fill-opacity=".13"/>
+      <path d="M94 148 C140 120 202 102 276 110 C242 116 202 130 170 150 Z" style="fill:var(--a)"/>
+      <path d="M118 150 C158 132 210 120 264 121" style="stroke:var(--a)" stroke-width="3" fill="none" stroke-linecap="round" opacity=".65"/>
+      <path d="M150 66 C190 76 232 90 270 104 L262 118 C224 104 186 92 144 82 Z" fill="#000" fill-opacity=".18"/>
+      <g fill="#000" fill-opacity=".5">
+        <circle cx="160" cy="74" r="2.6"/><circle cx="178" cy="80" r="2.6"/><circle cx="196" cy="86" r="2.6"/><circle cx="214" cy="92" r="2.6"/><circle cx="232" cy="98" r="2.6"/><circle cx="250" cy="105" r="2.6"/>
+      </g>
+      <g stroke-linecap="round" fill="none">
+        <g stroke="#000" stroke-opacity=".25" stroke-width="6.5"><path d="M158 70 L176 63"/><path d="M176 76 L194 69"/><path d="M194 82 L212 75"/><path d="M212 88 L230 81"/><path d="M230 94 L248 88"/></g>
+        <g stroke="#f4f4f6" stroke-width="4.5"><path d="M158 70 L176 63"/><path d="M176 76 L194 69"/><path d="M194 82 L212 75"/><path d="M212 88 L230 81"/><path d="M230 94 L248 88"/></g>
+      </g>
+      <path d="M158 52 L170 30 C174 24 184 22 192 26 L200 34 C196 40 190 44 184 46 C176 48 166 50 158 52 Z" fill="#fff" fill-opacity=".14"/>
+      <rect x="176" y="29" width="15" height="6" rx="3" transform="rotate(22 183 32)" style="fill:var(--a)"/>
+      <path d="M46 72 C56 62 70 58 82 61 C98 64 110 74 124 76" fill="none" stroke="#000" stroke-opacity=".3" stroke-width="7" stroke-linecap="round"/>
+      <path d="M40 82 C36 94 36 106 38 118" style="stroke:var(--a)" stroke-width="6" stroke-linecap="round" fill="none"/>
+      <path d="M88 140 C150 112 222 100 302 106" stroke="#fff" stroke-opacity=".35" stroke-dasharray="3 4" fill="none" stroke-width="1"/>
+      <path d="M296 108 C336 116 368 128 384 142" stroke="#fff" stroke-opacity=".3" stroke-dasharray="3 4" fill="none" stroke-width="1"/>
+      <circle cx="60" cy="122" r="7" style="fill:var(--a)"/>
+      <circle cx="60" cy="122" r="3" fill="#000" fill-opacity=".35"/>
+      <path d="M58 64 C80 55 104 65 124 73 C104 70 80 62 60 68 Z" fill="#000" fill-opacity=".45"/>
+      <g fill="#000" fill-opacity=".22">
+        <circle cx="330" cy="124" r="1.4"/><circle cx="340" cy="126" r="1.4"/><circle cx="350" cy="129" r="1.4"/><circle cx="360" cy="132" r="1.4"/>
+        <circle cx="335" cy="132" r="1.4"/><circle cx="345" cy="135" r="1.4"/><circle cx="355" cy="138" r="1.4"/><circle cx="365" cy="141" r="1.4"/>
+        <circle cx="340" cy="141" r="1.4"/><circle cx="350" cy="144" r="1.4"/><circle cx="360" cy="146" r="1.4"/>
+      </g>
+      <path d="M150 84 C176 98 196 122 204 150 L238 150 C232 122 216 100 196 90 Z" fill="#fff" fill-opacity=".06"/>
+      <ellipse cx="352" cy="121" rx="26" ry="5" transform="rotate(14 352 121)" fill="#fff" fill-opacity=".12"/>
+      <use href="#upper-shape" style="fill:url(#g-upper)"/>
+      <use href="#upper-shape" style="fill:url(#g-rim)"/>
+    </symbol>
+
+    <symbol id="shoe" viewBox="0 0 400 220">
+      <ellipse cx="210" cy="201" rx="196" ry="11" fill="url(#g-shadow)"/>
+      <use href="#shoe-out"/><use href="#shoe-mid"/><use href="#shoe-up"/>
+    </symbol>
+  </defs>
+</svg>
+
+<!-- ============ Global nav ============ -->
+<nav class="globalnav" aria-label="Global">
+  <div class="globalnav__inner">
+    <button class="icon-btn globalnav__menu-btn press" id="open-menu" aria-label="Menú"><svg viewBox="0 0 18 18"><path d="M2 6h14M2 12h14"/></svg></button>
+    <a href="#" class="globalnav__logo" aria-label="Inicio">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="currentColor"/><path d="M4.6 6.8c3.4 1.6 5.4 4.4 5.4 5.2s-2 3.6-5.4 5.2M19.4 6.8c-3.4 1.6-5.4 4.4-5.4 5.2s2 3.6 5.4 5.2" fill="none" stroke="#161617" stroke-width="1.6" stroke-linecap="round"/></svg>
+      Set Point
+    </a>
+    <ul class="globalnav__links" id="desktop-nav"></ul>
+    <div class="globalnav__icons">
+      <button class="icon-btn press" id="toggle-search" aria-label="Buscar" aria-expanded="false" aria-controls="search-panel"><svg viewBox="0 0 18 18"><circle cx="7.6" cy="7.6" r="5.6"/><path d="M11.8 11.8L16 16"/></svg></button>
+      <button class="icon-btn press" id="open-bag" aria-label="Bolsa de compra"><svg viewBox="0 0 18 18"><path d="M3.5 6.2h11l-.9 9.3H4.4z"/><path d="M6.2 6.2V5a2.8 2.8 0 015.6 0v1.2"/></svg><span class="bag-badge" id="bag-badge" data-empty="true">0</span></button>
+    </div>
+  </div>
+</nav>
+
+<!-- ============ Local nav (sticky) ============ -->
+<nav class="localnav" aria-label="Court Pro">
+  <div class="localnav__inner">
+    <a href="#top" class="localnav__title">Court Pro</a>
+    <div class="localnav__menu">
+      <ul class="localnav__links" id="local-links">
+        <li><a href="#destacado">Destacado</a></li>
+        <li><a href="#tecnologia">Tecnología</a></li>
+        <li><a href="#anatomia">Anatomía</a></li>
+        <li><a href="#colores">Colores</a></li>
+        <li><a href="#comparar">Comparar</a></li>
+        <li><a href="#catalogo">Catálogo</a></li>
+      </ul>
+      <a href="#catalogo" class="btn btn--sm press">Comprar</a>
+    </div>
+  </div>
+</nav>
+
+<div class="search-panel" id="search-panel" role="search">
+  <div class="search-panel__inner">
+    <button class="close-btn search-panel__close press" id="close-search" aria-label="Cerrar búsqueda" style="background:rgba(255,255,255,.1);color:#f5f5f7"><svg viewBox="0 0 12 12"><path d="M2 2l8 8M10 2l-8 8"/></svg></button>
+    <form class="search-field" id="search-form">
+      <svg viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="7"/><path d="M16 16l5 5" stroke-linecap="round"/></svg>
+      <label for="search-input" class="sr-only">Buscar</label>
+      <input type="search" id="search-input" placeholder="Buscar en Set Point" autocomplete="off">
+    </form>
+    <div class="search-panel__hint">Búsquedas rápidas</div>
+    <div class="search-panel__quick" id="quick-search"></div>
+  </div>
+</div>
+
+<main id="top">
+  <!-- ============ HERO ============ -->
+  <section class="hero dark" id="hero" aria-label="Court Pro">
+    <div class="hero__text" id="hero-text">
+      <p class="hero__eyebrow">Calzado de tennis · Hombre</p>
+      <h1 class="hero__title grad-metal">Court Pro</h1>
+      <p class="hero__tag">Velocidad. Control. <span class="grad-volt">Sin límites.</span></p>
+    </div>
+    <div class="hero__stage" id="hero-stage"></div>
+    <div class="hero__cta">
+      <div class="hero__cta-row">
+        <a href="#catalogo" class="btn press">Comprar</a>
+        <a href="#destacado" class="link" style="font-size:17px">Descubre más ›</a>
+      </div>
+      <div class="hero__price">Desde $1,399 o 3 meses sin intereses*</div>
+      <div class="hero__chips">
+        <span><svg viewBox="0 0 16 16"><path d="M2 12c2-5 10-5 12 0"/><path d="M4 12h8"/></svg>Cancha dura y arcilla</span>
+        <span><svg viewBox="0 0 16 16"><path d="M8 2v4M8 6l3 7H5z"/></svg>Desde 298 g</span>
+        <span><svg viewBox="0 0 16 16"><path d="M3 8a5 5 0 019-3l1 1M13 8a5 5 0 01-9 3l-1-1"/><path d="M13 3v3h-3M3 13v-3h3"/></svg>Cambio de talla gratis</span>
+      </div>
+      <div class="hero__scroll" aria-hidden="true"><i></i></div>
+    </div>
+  </section>
+
+  <!-- ============ HIGHLIGHTS ============ -->
+  <section class="section dark" id="destacado" aria-label="Lo más destacado">
+    <div class="page section__head">
+      <h2 class="headline" data-reveal>Lo más destacado.</h2>
+    </div>
+    <div class="gallery" id="gallery">
+      <div class="gallery__track" id="gallery-track"></div>
+      <div class="gallery__controls">
+        <div class="dots" id="gallery-dots" role="tablist" aria-label="Diapositivas"></div>
+        <button class="round-btn press" id="gallery-play" aria-label="Pausar"><svg viewBox="0 0 18 18" id="gallery-play-icon"><rect x="4" y="3" width="3.5" height="12" rx="1"/><rect x="10.5" y="3" width="3.5" height="12" rx="1"/></svg></button>
+        <div class="paddles">
+          <button class="round-btn press" id="gallery-prev" aria-label="Anterior"><svg viewBox="0 0 18 18"><path d="M11.5 3.5L6 9l5.5 5.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          <button class="round-btn press" id="gallery-next" aria-label="Siguiente"><svg viewBox="0 0 18 18"><path d="M6.5 3.5L12 9l-5.5 5.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ BENTO / TECH ============ -->
+  <section class="section dark" id="tecnologia" aria-label="Tecnología" style="content-visibility:auto;contain-intrinsic-size:auto 1500px">
+    <div class="page">
+      <div class="section__head">
+        <div>
+          <p class="eyebrow" data-reveal>Tecnología</p>
+          <h2 class="headline" data-reveal style="--d:80ms">Cada capa,<br><span class="grad-volt">con propósito.</span></h2>
+        </div>
+        <p class="subhead" data-reveal style="--d:160ms">Construidos por capas para que cada una haga su trabajo: <strong>respirar, amortiguar y agarrar.</strong></p>
+      </div>
+
+      <div class="bento">
+        <article class="tile tile--hero" data-reveal>
+          <h3>Tres capas.<br>Una pisada.</h3>
+          <p>Malla transpirable, mediasuela de doble densidad y caucho de alta abrasión trabajando como una sola pieza.</p>
+          <div class="tile__art" id="tile-art"></div>
+          <a href="#anatomia" class="tile__cta">Desármala capa por capa <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 2v10M3 8l4 4 4-4"/></svg></a>
+        </article>
+
+        <article class="tile" data-reveal style="--d:80ms">
+          <p class="tile__label">Ligereza <span>que no sacrifica soporte.</span></p>
+          <div class="tile__num grad-volt"><span data-count="298">0</span><small>g</small></div>
+          <div class="tile__foot">Peso promedio en talla 27 MX.</div>
+        </article>
+
+        <article class="tile" data-reveal style="--d:140ms">
+          <p class="tile__label">Retorno de energía <span>en cada arranque.</span></p>
+          <div class="tile__num"><span data-count="62">0</span><small>%</small></div>
+          <div class="tile__foot">Espuma reactiva frente a EVA estándar.</div>
+        </article>
+
+        <article class="tile tile--wide" data-reveal style="--d:80ms">
+          <p class="tile__label">Una suela para cada superficie. <span>Elige la tuya y juega con confianza.</span></p>
+          <div class="surfaces">
+            <span><i style="background:#3d7dff"></i>Cancha dura</span>
+            <span><i style="background:#d8774a"></i>Arcilla</span>
+            <span><i style="background:#4cc36a"></i>Pasto</span>
+            <span><i style="background:#c6ff3d"></i>Pádel</span>
+          </div>
+        </article>
+
+        <article class="tile tile--wide" data-reveal style="--d:80ms">
+          <p class="tile__label">Tallas <span>completas y medias.</span></p>
+          <div class="tile__num tile__num--fit">25<span style="color:var(--text-3)">–</span>30</div>
+          <div class="tile__foot">Cambio de talla sin costo en 30 días.</div>
+        </article>
+
+        <article class="tile tile--wide" data-reveal style="--d:140ms">
+          <p class="tile__label">Paga a tu ritmo.</p>
+          <div class="tile__num"><span data-count="3">0</span><small>MSI</small></div>
+          <div class="tile__foot">En toda la tienda con tarjetas participantes.*</div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ ANATOMY (sticky, scroll-linked exploded view) ============ -->
+  <section class="anat dark" id="anatomia" aria-label="Anatomía del Court Pro">
+    <div class="anat__sticky">
+      <div class="anat__glow" id="anat-glow"></div>
+      <header class="anat__head" id="anat-head">
+        <p class="eyebrow">Anatomía</p>
+        <h2 class="headline">Desármala.<br><span class="grad-volt">Capa por capa.</span></h2>
+        <div class="anat__hint" id="anat-hint"><svg viewBox="0 0 14 14"><path d="M7 2v10M3 8l4 4 4-4"/></svg>Sigue bajando para separar las capas</div>
+      </header>
+
+      <div class="anat__stage" id="anat-stage">
+        <!-- each layer is its own <svg> so the GPU can move it without repainting the drawing -->
+        <div class="anat__rig" id="anat-rot" style="--m:#16171b;--a:#c6ff3d;--s:#ececf0">
+          <svg class="anat__layer" id="anat-out" viewBox="-200 -110 800 440" aria-hidden="true">
+            <ellipse cx="210" cy="206" rx="196" ry="10" fill="url(#g-shadow)"/>
+            <use href="#shoe-out" x="0" y="0" width="400" height="220"/>
+          </svg>
+          <svg class="anat__layer" id="anat-mid" viewBox="-200 -110 800 440" aria-hidden="true"><use href="#shoe-mid" x="0" y="0" width="400" height="220"/></svg>
+          <svg class="anat__layer" id="anat-up" viewBox="-200 -110 800 440" aria-hidden="true"><use href="#shoe-up" x="0" y="0" width="400" height="220"/></svg>
+        </div>
+        <svg class="anat__overlay" viewBox="-200 -110 800 440" aria-hidden="true">
+          <g class="anat__leads" fill="none" stroke-width="1.2" stroke-linecap="round">
+            <path id="anat-lead-0" pathLength="1" stroke="#c6ff3d" d="M300 14 L384 -40 L446 -40"/>
+            <path id="anat-lead-1" pathLength="1" stroke="#5effc1" d="M96 160 L-64 160"/>
+            <path id="anat-lead-2" pathLength="1" stroke="#3dd6ff" d="M300 276 L384 250 L446 250"/>
+          </g>
+          <g class="anat__dots">
+            <circle id="anat-dot-0" cx="300" cy="14" r="4.5" fill="#c6ff3d"/>
+            <circle id="anat-dot-1" cx="96" cy="160" r="4.5" fill="#5effc1"/>
+            <circle id="anat-dot-2" cx="300" cy="276" r="4.5" fill="#3dd6ff"/>
+          </g>
+        </svg>
+
+        <div class="anat__label" style="--c:#c6ff3d; left:81.5%; top:15.9%">
+          <span class="anat__num">1</span>
+          <h3>Capellada</h3>
+          <p>Malla de ingeniería transpirable con refuerzos termosellados en las zonas de arrastre.</p>
+          <span class="anat__spec">Malla 3D · Puntera reforzada</span>
+        </div>
+        <div class="anat__label anat__label--left" style="--c:#5effc1; right:84%; top:61.4%">
+          <span class="anat__num">2</span>
+          <h3>Mediasuela</h3>
+          <p>Espuma de doble densidad con cápsula de gel en el talón para absorber cada frenada.</p>
+          <span class="anat__spec">Doble densidad · Gel</span>
+        </div>
+        <div class="anat__label" style="--c:#3dd6ff; left:81.5%; top:81.8%">
+          <span class="anat__num">3</span>
+          <h3>Suela</h3>
+          <p>Caucho de alta abrasión con patrón de espiga que agarra en dura y desliza en arcilla.</p>
+          <span class="anat__spec">Caucho · Espiga</span>
+        </div>
+      </div>
+
+      <div class="anat__caption" id="anat-caption" aria-live="polite"></div>
+
+      <nav class="anat__steps" aria-label="Capas">
+        <button class="anat__step press" style="--c:#c6ff3d" data-step="0"><i></i>Capellada<b></b></button>
+        <button class="anat__step press" style="--c:#5effc1" data-step="1"><i></i>Mediasuela<b></b></button>
+        <button class="anat__step press" style="--c:#3dd6ff" data-step="2"><i></i>Suela<b></b></button>
+      </nav>
+    </div>
+  </section>
+
+  <!-- ============ STORY (sticky scroll) ============ -->
+  <section class="story dark" id="story" aria-label="Diseñado para cada punto">
+    <div class="story__sticky">
+      <div class="story__glow" id="story-glow"></div>
+      <div class="story__progress" aria-hidden="true"><i id="story-bar"></i></div>
+      <div class="story__steps">
+        <article class="story__step is-active">
+          <p class="eyebrow">01 · Arranque</p>
+          <h3>Sal disparado<br>al primer paso.</h3>
+          <p>La puntera curva y la espuma reactiva convierten cada impulso en velocidad. <strong>Llegas antes a la bola.</strong></p>
+        </article>
+        <article class="story__step">
+          <p class="eyebrow">02 · Lateral</p>
+          <h3>Cambios de<br>dirección sin miedo.</h3>
+          <p>El refuerzo lateral y el contrafuerte de talón te sostienen cuando el punto se vuelve físico. <strong>Estabilidad total.</strong></p>
+        </article>
+        <article class="story__step">
+          <p class="eyebrow">03 · Frenado</p>
+          <h3>Frena en seco.<br>Recupera al instante.</h3>
+          <p>La espiga de la suela muerde la cancha para que frenes, gires y vuelvas al centro. <strong>Control en cada golpe.</strong></p>
+        </article>
+      </div>
+      <div class="story__shoe" id="story-shoe"></div>
+    </div>
+  </section>
+
+  <!-- ============ CLOSER LOOK ============ -->
+  <section class="section dark" id="colores" aria-label="Colores" style="content-visibility:auto;contain-intrinsic-size:auto 1100px">
+    <div class="page">
+      <div class="section__head">
+        <h2 class="headline" data-reveal>Mírala de cerca.</h2>
+        <p class="subhead" data-reveal style="--d:100ms">Cinco combinaciones, un mismo nivel de juego. <strong>Elige la que va contigo.</strong></p>
+      </div>
+      <div class="viewer" data-reveal>
+        <div class="viewer__floor" aria-hidden="true"></div>
+        <div class="viewer__stage" id="viewer-stage"></div>
+        <div class="viewer__bar">
+          <div class="viewer__name" id="viewer-name" aria-live="polite"></div>
+          <div class="swatches" id="viewer-swatches" role="group" aria-label="Color"></div>
+          <div class="segmented" id="viewer-angles" role="group" aria-label="Ángulo">
+            <span class="segmented__thumb"></span>
+            <button data-angle="0" aria-pressed="true">Lateral</button>
+            <button data-angle="1" aria-pressed="false">Dinámica</button>
+            <button data-angle="2" aria-pressed="false">Medial</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ COMPARE ============ -->
+  <section class="section dark" id="comparar" aria-label="Comparar modelos" style="content-visibility:auto;contain-intrinsic-size:auto 1200px">
+    <div class="page">
+      <div class="section__head" style="justify-content:center;text-align:center">
+        <h2 class="headline" data-reveal>¿Cuál es para ti?</h2>
+      </div>
+      <div class="compare" id="compare"></div>
+    </div>
+  </section>
+
+  <!-- ============ CATALOG ============ -->
+  <div class="catalog" id="catalogo">
+    <header class="catalog__head" style="max-width:var(--page);margin:0 auto">
+      <p class="eyebrow">Calzado Tennis Hombre</p>
+      <h2 class="headline">Toda la colección.</h2>
+      <div style="margin-top:34px" aria-label="Categorías"><div class="shelf__track" id="cat-track"></div></div>
+    </header>
+
+    <div class="toolbar" id="toolbar">
+      <div class="page toolbar__inner">
+        <div class="toolbar__pills" id="quick-pills">
+          <button class="pill press" id="open-filters"><svg viewBox="0 0 16 16"><path d="M2 4.5h12M4.5 8h7M6.5 11.5h3"/></svg>Filtros <span class="pill__badge" id="filter-badge"></span></button>
+        </div>
+        <div class="toolbar__right">
+          <span class="count count--desk" id="count" aria-live="polite"></span>
+          <div class="select">
+            <label for="sort-by" class="sr-only">Ordenar por</label>
+            <select id="sort-by">
+              <option value="manual">Destacados</option>
+              <option value="relevance">Más relevantes</option>
+              <option value="best-selling">Más vendidos</option>
+              <option value="title-ascending">Nombre: A–Z</option>
+              <option value="title-descending">Nombre: Z–A</option>
+              <option value="price-ascending">Precio: menor a mayor</option>
+              <option value="price-descending">Precio: mayor a menor</option>
+              <option value="created-ascending">Más antiguos</option>
+              <option value="created-descending">Más recientes</option>
+            </select>
+            <svg viewBox="0 0 10 10"><path d="M1.5 3.5L5 7l3.5-3.5"/></svg>
+          </div>
+          <div class="segmented" id="view-seg" role="group" aria-label="Vista">
+            <span class="segmented__thumb"></span>
+            <button data-view="grid" aria-pressed="true" aria-label="Cuadrícula"><svg viewBox="0 0 16 16"><rect x="1" y="1" width="6" height="6" rx="1.5"/><rect x="9" y="1" width="6" height="6" rx="1.5"/><rect x="1" y="9" width="6" height="6" rx="1.5"/><rect x="9" y="9" width="6" height="6" rx="1.5"/></svg></button>
+            <button data-view="compact" aria-pressed="false" aria-label="Compacta"><svg viewBox="0 0 16 16"><rect x="1" y="1" width="3.6" height="3.6" rx="1"/><rect x="6.2" y="1" width="3.6" height="3.6" rx="1"/><rect x="11.4" y="1" width="3.6" height="3.6" rx="1"/><rect x="1" y="6.2" width="3.6" height="3.6" rx="1"/><rect x="6.2" y="6.2" width="3.6" height="3.6" rx="1"/><rect x="11.4" y="6.2" width="3.6" height="3.6" rx="1"/><rect x="1" y="11.4" width="3.6" height="3.6" rx="1"/><rect x="6.2" y="11.4" width="3.6" height="3.6" rx="1"/><rect x="11.4" y="11.4" width="3.6" height="3.6" rx="1"/></svg></button>
+            <button data-view="list" aria-pressed="false" aria-label="Lista"><svg viewBox="0 0 16 16"><rect x="1" y="1.5" width="14" height="3.4" rx="1.2"/><rect x="1" y="6.3" width="14" height="3.4" rx="1.2"/><rect x="1" y="11.1" width="14" height="3.4" rx="1.2"/></svg></button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <section class="grid-section" style="max-width:var(--page);margin:0 auto" aria-label="Productos">
+      <div class="chips" id="chips"></div>
+      <div class="grid" id="grid" data-view="grid"></div>
+      <div class="more" id="more"></div>
+    </section>
+  </div>
+
+  <section class="band">
+    <div class="page">
+      <h2 class="headline" style="font-size:clamp(2rem,4vw,3.25rem)">Comprar aquí es fácil.</h2>
+      <div class="band__grid">
+        <article class="vp"><svg viewBox="0 0 32 32"><path d="M3 9h17v13H3zM20 13h5l4 4.5V22h-9z"/><circle cx="9" cy="23.5" r="2.5"/><circle cx="24" cy="23.5" r="2.5"/></svg><h3>Envío gratis desde $1,500.</h3><p>Recibe en 2 a 5 días hábiles en todo México.</p></article>
+        <article class="vp"><svg viewBox="0 0 32 32"><rect x="3" y="7" width="26" height="18" rx="3"/><path d="M3 12h26M8 19h6"/></svg><h3>3 meses sin intereses.</h3><p>Con tarjetas de crédito participantes en toda la tienda.</p></article>
+        <article class="vp"><svg viewBox="0 0 32 32"><path d="M6 16a10 10 0 0117-7l3 3M26 16a10 10 0 01-17 7l-3-3"/><path d="M26 6v6h-6M6 26v-6h6"/></svg><h3>Cambios de talla sin costo.</h3><p>Tienes 30 días para cambiar tu par si no te queda.</p></article>
+        <article class="vp"><svg viewBox="0 0 32 32"><path d="M16 4l3.6 7.4 8.1 1.2-5.9 5.7 1.4 8.1L16 22.6l-7.2 3.8 1.4-8.1-5.9-5.7 8.1-1.2z"/></svg><h3>Asesoría de expertos.</h3><p>Te ayudamos a elegir el calzado ideal para tu juego.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="recent" id="recent" hidden>
+    <div class="page">
+      <h2>Visto recientemente.</h2>
+      <div class="shelf__track" id="recent-track"></div>
+    </div>
+  </section>
+
+  <section class="newsletter">
+    <div class="page">
+      <h2 class="headline" style="font-size:clamp(2.25rem,5vw,4rem)">Sé el primero<br>en saberlo.</h2>
+      <p>Suscríbete para recibir promociones y avisos de lanzamientos antes que nadie.</p>
+      <form id="nl-form" novalidate>
+        <div class="field">
+          <input type="email" id="nl-email" placeholder=" " autocomplete="email" required>
+          <label for="nl-email">Correo electrónico</label>
+          <button type="submit" class="press" aria-label="Suscribir"><svg viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4"/></svg></button>
+        </div>
+        <div class="field-msg" id="nl-msg" aria-live="polite"></div>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="page">
+    <nav class="footer__crumbs" aria-label="Ruta">
+      <a href="#" aria-label="Inicio"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="currentColor"/><path d="M4.6 6.8c3.4 1.6 5.4 4.4 5.4 5.2s-2 3.6-5.4 5.2M19.4 6.8c-3.4 1.6-5.4 4.4-5.4 5.2s2 3.6 5.4 5.2" fill="none" stroke="var(--bg-alt)" stroke-width="1.6" stroke-linecap="round"/></svg></a>
+      <span>›</span><a href="#">Calzado</a><span>›</span><a href="#top">Court Pro</a>
+    </nav>
+    <div class="footer__notes">
+      <p>* Meses sin intereses disponibles con tarjetas de crédito participantes. Monto mínimo de compra aplicable.</p>
+      <p>Datos técnicos ilustrativos y aproximados. Precios en MXN con IVA incluido, sujetos a cambio sin previo aviso. Imágenes de producto ilustrativas.</p>
+    </div>
+    <div class="footer__dir" id="footer-dir">
+      <div class="footer__col"><h3>Empresa</h3><ul><li><a href="#">Inicio</a></li><li><a href="#">Nosotros</a></li><li><a href="#">Noticias</a></li><li><a href="#">Garantías</a></li></ul></div>
+      <div class="footer__col"><h3>Categorías</h3><ul><li><a href="#">Raquetas</a></li><li><a href="#">Calzado</a></li><li><a href="#">Maletas</a></li><li><a href="#">Accesorios</a></li><li><a href="#">Cuerdas</a></li><li><a href="#">Pelotas</a></li></ul></div>
+      <div class="footer__col"><h3>Tienda</h3><ul><li><a href="#">Preguntas frecuentes</a></li><li><a href="#">Devoluciones</a></li><li><a href="#">Aviso de privacidad</a></li><li><a href="#">Términos y condiciones</a></li><li><a href="#">Envíos</a></li></ul></div>
+      <div class="footer__col"><h3>Contacto</h3><ul><li><a href="tel:8100000000">81 0000 0000</a></li><li><a href="#">Escríbenos</a></li><li><a href="#">Sucursales</a></li></ul></div>
+      <div class="footer__col"><h3>Síguenos</h3>
+        <div class="footer__social">
+          <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.8.1 3.3.1 4.8 1.7 4.9 4.9.1 1.3.1 1.6.1 4.8s0 3.6-.1 4.8c-.1 3.2-1.7 4.8-4.9 4.9-1.3.1-1.6.1-4.8.1s-3.6 0-4.8-.1c-3.3-.1-4.8-1.7-4.9-4.9C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.8C2.4 3.9 3.9 2.4 7.2 2.3 8.4 2.2 8.8 2.2 12 2.2zM12 0C8.7 0 8.3 0 7.1.1 2.7.3.3 2.7.1 7.1 0 8.3 0 8.7 0 12s0 3.7.1 4.9c.2 4.4 2.6 6.8 7 7 1.2.1 1.6.1 4.9.1s3.7 0 4.9-.1c4.4-.2 6.8-2.6 7-7 .1-1.2.1-1.6.1-4.9s0-3.7-.1-4.9c-.2-4.4-2.6-6.8-7-7C15.7 0 15.3 0 12 0zm0 5.8a6.2 6.2 0 100 12.4 6.2 6.2 0 000-12.4zM12 16a4 4 0 110-8 4 4 0 010 8zm6.4-11.8a1.4 1.4 0 100 2.9 1.4 1.4 0 000-2.9z"/></svg></a>
+          <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M24 12.07C24 5.4 18.63 0 12 0S0 5.4 0 12.07C0 18.1 4.39 23.1 10.13 24v-8.44H7.08v-3.49h3.04V9.41c0-3.02 1.8-4.7 4.54-4.7 1.31 0 2.68.24 2.68.24v2.97h-1.5c-1.5 0-1.96.93-1.96 1.89v2.26h3.33l-.53 3.5h-2.8V24C19.62 23.1 24 18.1 24 12.07"/></svg></a>
+        </div>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <span>Copyright © <span id="year"></span> Set Point. Todos los derechos reservados.</span>
+      <nav aria-label="Legal"><a href="#">Privacidad</a><a href="#">Términos</a><a href="#">Pedidos</a><a href="#">Mi cuenta</a></nav>
+      <button class="theme-toggle" id="theme-toggle" aria-label="Cambiar tema del catálogo"></button>
+    </div>
+  </div>
+</footer>
+
+<!-- ============ Overlays ============ -->
+<div class="scrim" id="scrim"></div>
+
+<aside class="sheet sheet--left" id="menu-sheet" aria-label="Menú" role="dialog" aria-modal="true" data-side="left">
+  <div class="sheet__grabber"></div>
+  <div class="sheet__head"><span style="font-size:17px;font-weight:600">Set Point</span><button class="close-btn press" data-close aria-label="Cerrar"><svg viewBox="0 0 12 12"><path d="M2 2l8 8M10 2l-8 8"/></svg></button></div>
+  <div class="sheet__body"><nav class="mnav" id="mobile-nav"></nav></div>
+</aside>
+
+<aside class="sheet" id="filter-sheet" aria-labelledby="filter-title" role="dialog" aria-modal="true" data-side="right">
+  <div class="sheet__grabber"></div>
+  <div class="sheet__head"><h2 class="sheet__title" id="filter-title">Filtros</h2><button class="close-btn press" data-close aria-label="Cerrar"><svg viewBox="0 0 12 12"><path d="M2 2l8 8M10 2l-8 8"/></svg></button></div>
+  <div class="sheet__body" id="filter-body"></div>
+  <div class="sheet__foot"><div class="sheet__foot-row"><button class="btn btn--secondary press" id="filter-clear">Borrar</button><button class="btn press" data-close id="filter-apply">Ver artículos</button></div></div>
+</aside>
+
+<aside class="sheet" id="bag-sheet" aria-labelledby="bag-title" role="dialog" aria-modal="true" data-side="right">
+  <div class="sheet__grabber"></div>
+  <div class="sheet__head"><h2 class="sheet__title" id="bag-title">Bolsa</h2><button class="close-btn press" data-close aria-label="Cerrar"><svg viewBox="0 0 12 12"><path d="M2 2l8 8M10 2l-8 8"/></svg></button></div>
+  <div class="sheet__body" id="bag-body"></div>
+  <div class="sheet__foot" id="bag-foot"></div>
+</aside>
+
+<div class="modal" id="quick-look" role="dialog" aria-modal="true" aria-labelledby="ql-title">
+  <div class="modal__panel">
+    <button class="close-btn modal__close press" data-close aria-label="Cerrar"><svg viewBox="0 0 12 12"><path d="M2 2l8 8M10 2l-8 8"/></svg></button>
+    <div class="modal__media" id="ql-media">
+      <div id="ql-img" style="width:100%;display:flex;justify-content:center"></div>
+      <div class="modal__thumbs" id="ql-thumbs"></div>
+    </div>
+    <div class="modal__info">
+      <div class="modal__eyebrow" id="ql-eyebrow"></div>
+      <div class="card__vendor" id="ql-vendor"></div>
+      <h2 class="modal__title" id="ql-title"></h2>
+      <div class="modal__price" id="ql-price"></div>
+      <div class="modal__msi" id="ql-msi"></div>
+      <div class="modal__label"><span>Elige tu talla (MX)</span><button class="link">Guía de tallas</button></div>
+      <div class="sizes" id="ql-sizes" role="group" aria-label="Talla"></div>
+      <button class="btn btn--block press" id="ql-add">Agregar a la bolsa</button>
+      <ul class="modal__perks">
+        <li><svg viewBox="0 0 24 24"><path d="M2 7h13v10H2zM15 10h4l3 3.5V17h-7"/><circle cx="6.5" cy="18" r="1.8"/><circle cx="18" cy="18" r="1.8"/></svg>Envío gratis en compras desde $1,500</li>
+        <li><svg viewBox="0 0 24 24"><path d="M4 12a8 8 0 0114-5.3L20 9M20 12a8 8 0 01-14 5.3L4 15"/><path d="M20 4v5h-5M4 20v-5h5"/></svg>Cambio de talla sin costo en 30 días</li>
+        <li><svg viewBox="0 0 24 24"><path d="M12 3l7 3v6c0 4.5-3 7.8-7 9-4-1.2-7-4.5-7-9V6z"/><path d="M9 12l2 2 4-4"/></svg>Producto 100% original con garantía</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<!-- Scripts run in this order and share one global scope (no modules, so file:// works). -->
+<script src="js/data.js"></script>
+<script src="js/helpers.js"></script>
+<script src="js/scroll-engine.js"></script>
+<script src="js/hero.js"></script>
+<script src="js/gallery.js"></script>
+<script src="js/reveals.js"></script>
+<script src="js/anatomy.js"></script>
+<script src="js/story.js"></script>
+<script src="js/viewer.js"></script>
+<script src="js/compare.js"></script>
+<script src="js/nav.js"></script>
+<script src="js/filters.js"></script>
+<script src="js/products.js"></script>
+<script src="js/overlays.js"></script>
+<script src="js/quick-look.js"></script>
+<script src="js/bag.js"></script>
+<script src="js/search.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

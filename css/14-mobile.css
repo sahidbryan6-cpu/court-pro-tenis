@@ -1,0 +1,95 @@
+/* 14-mobile.css — Phone & touch: lighter rendering (no live blur, no filter shadows), bigger tap
+   targets, and layout fixes so nothing is cut off or cramped. Loaded last so it can override. */
+
+/* =========================================================
+   Touch devices (any size): drop the costliest paint work
+   ========================================================= */
+@media (hover: none) and (pointer: coarse) {
+  /* backdrop-filter re-blurs everything behind the bar on every scroll frame — use solid glass instead */
+  .localnav { background: rgba(0, 0, 0, .92); -webkit-backdrop-filter: none; backdrop-filter: none; }
+  .toolbar { background: var(--bg); -webkit-backdrop-filter: none; backdrop-filter: none; }
+  .toast { background: var(--bg); -webkit-backdrop-filter: none; backdrop-filter: none; }
+
+  /* drop-shadow filters on big moving SVGs are expensive to rasterize; the artwork has its own floor shadow */
+  .hero__stage svg, .story__shoe svg, .viewer__stage svg, .hl__art svg, .tile__art svg { filter: none; }
+  .hero__reflect { display: none; }
+
+  /* fewer simultaneous GPU layers keeps memory low on phones */
+  .hero__text, .anat__label { will-change: auto; }
+
+  /* no sticky-hover artefacts after a tap */
+  .card:hover, .card:hover .card__shoe, .cat:hover .cat__img svg { transform: none; }
+}
+
+/* =========================================================
+   Phones
+   ========================================================= */
+@media (max-width: 760px) {
+  :root { --gutter: 20px; }
+
+  /* type: never below 13px for anything people read */
+  .card__vendor, .card__msi, .tile__foot, .cat small, .card__eyebrow, .footer { font-size: 13px; }
+  .hero__chips span { font-size: 13px; height: 34px; }
+  .eyebrow { font-size: 15px; }
+  .subhead { font-size: 17px; }
+  .headline { font-size: clamp(2.15rem, 9.5vw, 2.9rem); }
+  .hero__title { font-size: clamp(3.6rem, 18vw, 5.2rem); }
+  .hero__tag { font-size: clamp(1.25rem, 5.6vw, 1.6rem); }
+  .hl__copy h3 { font-size: clamp(1.5rem, 6.6vw, 1.9rem); }
+  .tile__num { font-size: clamp(3.2rem, 15vw, 4.2rem); }
+  .story__step h3 { font-size: clamp(1.9rem, 8.6vw, 2.6rem); }
+
+  /* hero: the shoe can use the full width */
+  .hero { padding-top: 48px; }
+  .hero__stage { width: 100vw; max-width: 560px; }
+  .hero__cta { margin-top: 8px; padding-bottom: 56px; }
+
+  /* sections breathe a little less on small screens */
+  .section { padding: 84px 0; }
+  .section__head { margin-bottom: 28px; }
+
+  /* gallery dots: 8px dots inside a 32px tap target */
+  .dots { gap: 4px; padding: 0 14px; height: 52px; }
+  .dots button { width: 8px; }
+  .dots button::before { content: ""; position: absolute; inset: -12px -6px; }
+  .dots button { overflow: visible; }
+  .dots button i { border-radius: 4px; overflow: hidden; }
+  .round-btn { width: 52px; height: 52px; }
+
+  /* colour swatches & viewer controls */
+  .swatches { gap: 12px; padding: 10px 14px; }
+  .swatch { width: 34px; height: 34px; }
+  .viewer__bar { justify-content: center; text-align: center; padding: 0 20px 26px; }
+  .viewer__name { width: 100%; min-width: 0; }
+
+  /* ---------- Anatomy on phones ----------
+     Labels are replaced by the caption, so the side margins of the drawing are empty:
+     widen the stage past the screen (clipped by the sticky box) so the shoe fills the width.
+     The title stays in the flow above the stage instead of floating over it. */
+  .anat { height: 320vh; }
+  .anat__sticky { justify-content: space-evenly; gap: 0; padding: 2vh var(--gutter) 3vh; }
+  .anat__head { position: relative; top: auto; left: auto; right: auto; }
+  .anat__head .headline { font-size: clamp(2rem, 9vw, 2.6rem); }
+  .anat__hint { font-size: 13px; }
+  .anat__stage { width: 190vw; max-width: none; margin: -6vh 0; }
+  .anat__caption { min-height: 84px; }
+  .anat__steps { gap: 4px; }
+  .anat__step { height: 40px; }
+
+  /* story: shorter pinned run on phones */
+  .story { height: 260vh; }
+
+  /* inputs ≥16px so iOS doesn't zoom the page when they get focus */
+  .range input, .select select, .field input { font-size: 16px; }
+
+  /* safe areas (notch / home indicator) */
+  .footer { padding-bottom: calc(22px + env(safe-area-inset-bottom)); }
+  .toast { bottom: calc(16px + env(safe-area-inset-bottom)); }
+}
+
+/* very short phones (iPhone SE class) */
+@media (max-width: 760px) and (max-height: 700px) {
+  .anat__head .headline { font-size: 1.85rem; }
+  .anat__hint { display: none; }
+  .anat__stage { width: 170vw; }
+}
