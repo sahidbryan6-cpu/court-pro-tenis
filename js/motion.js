@@ -51,16 +51,34 @@
 })();
 
 /* =========================================================
-   Type bands — two rows of giant words slide in opposite directions with the scroll
+   Type bands — two rows of words slide in opposite directions with the scroll.
+   At the middle of the scroll a complete phrase sits centered on screen; the rows
+   then travel ±travel/2 from there, so they never show a ragged start or end.
    ========================================================= */
 (function typeBands() {
-  if (reduceMotion.matches) return;
-  const sec = $("#marquee"), a = $("#mq-1"), b = $("#mq-2");
+  const sec = $("#marquee"), rows = [$("#mq-1"), $("#mq-2")];
+  rows.forEach(row => {
+    const words = row.dataset.words.split("|");
+    const unit = words.map(w => `<span>${w}</span><i class="mq__dot"></i>`).join("");
+    row.innerHTML = unit.repeat(8);                      // plenty to cover any screen while it travels
+  });
+  let widths = [0, 0];
+  const measure = () => { widths = rows.map(r => r.offsetWidth); };
+  const render = p => {
+    const vw = innerWidth, travel = Math.min(vw * 0.7, 760);
+    rows.forEach((row, i) => {
+      const center = (vw - widths[i]) / 2;              // row's middle aligned with the screen's middle
+      const dir = i === 0 ? 1 : -1;                     // opposite directions
+      row.style.transform = `translate3d(${(center + dir * (0.5 - p) * travel).toFixed(1)}px, 0, 0)`;
+    });
+  };
+  measure();
+  addEventListener("resize", () => { measure(); requestFrame(); }, { passive: true });
+  if (document.fonts) document.fonts.ready.then(() => { measure(); render(0.5); requestFrame(); });
+  if (reduceMotion.matches) { render(0.5); addEventListener("resize", () => render(0.5), { passive: true }); return; }
+  render(0.5);
   // 0 when the band enters at the bottom of the screen, 1 when it leaves at the top
-  addEffect(sec, (r, vh) => clamp((vh - r.top) / (vh + r.height)), p => {
-    a.style.transform = `translate3d(${(-p * 38).toFixed(3)}%, 0, 0)`;
-    b.style.transform = `translate3d(${(-38 + p * 38).toFixed(3)}%, 0, 0)`;
-  }, 140);
+  addEffect(sec, (r, vh) => clamp((vh - r.top) / (vh + r.height)), render, 140);
 })();
 
 /* =========================================================
