@@ -30,79 +30,132 @@
 <!-- ============ SVG sprite: original sneaker artwork, drawn once ============ -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
   <defs>
-    <radialGradient id="g-shadow"><stop offset="0" stop-color="#000" stop-opacity=".5"/><stop offset="1" stop-color="#000" stop-opacity="0"/></radialGradient>
+    <!-- Original performance-tennis sneaker. Colours come from CSS variables on each instance:
+         --m upper, --a accent, --s sole. Darker/lighter panels are black/white overlays, so every
+         colourway is shaded correctly. Layers (also used by the Anatomy section): shoe-out / shoe-mid / shoe-up. -->
+    <radialGradient id="g-shadow"><stop offset="0" stop-color="#000" stop-opacity=".55"/><stop offset="1" stop-color="#000" stop-opacity="0"/></radialGradient>
+    <radialGradient id="g-contact"><stop offset="0" stop-color="#000" stop-opacity=".6"/><stop offset=".7" stop-color="#000" stop-opacity=".15"/><stop offset="1" stop-color="#000" stop-opacity="0"/></radialGradient>
     <linearGradient id="g-upper" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0" stop-color="#fff" stop-opacity=".28"/><stop offset=".42" stop-color="#fff" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".22"/>
+      <stop offset="0" stop-color="#fff" stop-opacity=".24"/><stop offset=".42" stop-color="#fff" stop-opacity="0"/><stop offset=".8" stop-color="#000" stop-opacity=".06"/><stop offset="1" stop-color="#000" stop-opacity=".28"/>
     </linearGradient>
     <linearGradient id="g-mid" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0" stop-color="#fff" stop-opacity=".35"/><stop offset=".5" stop-color="#fff" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".18"/>
+      <stop offset="0" stop-color="#fff" stop-opacity=".55"/><stop offset=".3" stop-color="#fff" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".2"/>
+    </linearGradient>
+    <linearGradient id="g-gel" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#fff" stop-opacity=".75"/><stop offset=".45" stop-color="#fff" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".3"/>
     </linearGradient>
     <linearGradient id="g-rim" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset=".6" stop-color="#fff" stop-opacity="0"/><stop offset=".82" stop-color="#fff" stop-opacity=".2"/><stop offset="1" stop-color="#fff" stop-opacity="0"/>
+      <stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset=".64" stop-color="#fff" stop-opacity="0"/><stop offset=".88" stop-color="#fff" stop-opacity=".16"/><stop offset="1" stop-color="#fff" stop-opacity="0"/>
     </linearGradient>
-    <pattern id="p-mesh" width="7" height="7" patternUnits="userSpaceOnUse" patternTransform="rotate(18)">
-      <circle cx="3.5" cy="3.5" r="1" fill="#000" fill-opacity=".16"/>
+    <pattern id="p-mesh" width="4.5" height="4.5" patternUnits="userSpaceOnUse" patternTransform="rotate(18)">
+      <circle cx="2.25" cy="2.25" r=".7" fill="#000" fill-opacity=".16"/><circle cx="2.25" cy="1.7" r=".45" fill="#fff" fill-opacity=".07"/>
     </pattern>
-    <pattern id="p-tread" width="9" height="12" patternUnits="userSpaceOnUse" patternTransform="skewX(-20)">
-      <rect x="0" y="0" width="4.5" height="12" fill="#000" fill-opacity=".28"/>
+    <pattern id="p-perf" width="6.5" height="6.5" patternUnits="userSpaceOnUse" patternTransform="rotate(14)">
+      <circle cx="3.25" cy="3.25" r=".9" fill="#000" fill-opacity=".22"/><circle cx="3.25" cy="2.85" r=".45" fill="#fff" fill-opacity=".1"/>
+    </pattern>
+    <pattern id="p-herring" width="7" height="9" patternUnits="userSpaceOnUse">
+      <path d="M0 0 L3.5 4.5 L0 9 M3.5 0 L7 4.5 L3.5 9" fill="none" stroke="#000" stroke-opacity=".34" stroke-width="1.1"/>
     </pattern>
 
-    <path id="upper-shape" d="M34 150 C24 120 28 90 46 72 C54 62 66 58 80 60 C96 62 108 72 122 74 C140 76 150 66 158 52 L170 30 C174 24 184 22 192 26 L200 34 C206 44 210 56 216 66 C250 84 300 100 340 112 C370 120 388 132 390 146 C391 150 388 152 384 152 L34 152 Z"/>
+    <!-- shared outlines (no fill: each <use> decides) -->
+    <path id="upper-shape" d="M38 153 C30 133 28 104 38 84 C44 72 52 64 63 61 C78 58 95 66 110 70 C126 74 140 68 150 58 L163 34 C168 25 181 21 192 25 L201 32 C206 38 208 46 210 54 C236 68 282 82 324 92 C356 99 380 108 390 123 C396 132 397 146 391 151 C388 153 384 153 378 153 Z"/>
+    <path id="toe-shape" d="M262 80 C298 88 328 95 352 100 C374 106 388 116 392 130 C378 122 356 119 332 124 C308 129 285 135 262 141 C256 122 256 100 262 80 Z"/>
+    <path id="mid-shape" d="M26 150 C22 160 24 170 32 175 L360 175 C378 174 392 166 396 154 C397 150 395 147 391 146 C358 144 324 147 294 149 L134 149 C96 149 60 144 26 150 Z"/>
+    <path id="out-shape" d="M30 170 C29 182 40 191 60 191 L356 191 C376 191 390 184 394 172 L32 170 Z"/>
 
+    <!-- ===== Outsole: thin rubber with herringbone sidewall ===== -->
     <symbol id="shoe-out" viewBox="0 0 400 220">
-      <path d="M30 172 C30 188 42 197 62 197 L350 197 C374 197 388 187 390 172 Z" style="fill:var(--s)"/>
-      <path d="M30 172 C30 188 42 197 62 197 L350 197 C374 197 388 187 390 172 Z" fill="#000" fill-opacity=".38"/>
-      <path d="M44 184 L380 184 C378 190 372 194 352 194 L62 194 C52 194 46 190 44 184 Z" fill="url(#p-tread)"/>
+      <use href="#out-shape" style="fill:var(--s)"/>
+      <use href="#out-shape" fill="#000" fill-opacity=".48"/>
+      <path d="M42 180 L384 180 C381 186 372 189 354 189 L62 189 C51 189 45 186 42 180 Z" fill="url(#p-herring)"/>
+      <path d="M36 177 L388 177" stroke="#fff" stroke-opacity=".14" stroke-width="1"/>
     </symbol>
 
+    <!-- ===== Midsole: dual-density foam, toe spring, heel flare, lens gel window, toe guard ===== -->
     <symbol id="shoe-mid" viewBox="0 0 400 220">
-      <path d="M26 146 C21 158 23 170 30 177 L389 177 C396 167 396 154 389 145 C356 143 322 147 292 149 L132 149 C92 149 58 142 26 146 Z" style="fill:var(--s)"/>
-      <path d="M26 146 C21 158 23 170 30 177 L389 177 C396 167 396 154 389 145 C356 143 322 147 292 149 L132 149 C92 149 58 142 26 146 Z" fill="url(#g-mid)"/>
-      <path d="M32 163 C120 167 262 169 392 160" stroke="#000" stroke-opacity=".14" stroke-width="1.4" fill="none"/>
-      <rect x="54" y="153" width="60" height="16" rx="8" style="fill:var(--a)"/>
-      <rect x="54" y="153" width="60" height="16" rx="8" fill="url(#g-mid)"/>
-      <rect x="60" y="156" width="24" height="4" rx="2" fill="#fff" fill-opacity=".55"/>
-      <path d="M120 172 C200 175 300 173 384 167" stroke="#000" stroke-opacity=".08" stroke-width="2" fill="none"/>
-      <path d="M128 150.5 L292 150.5" stroke="#fff" stroke-opacity=".5" stroke-width="1"/>
+      <use href="#mid-shape" style="fill:var(--s)"/>
+      <!-- firmer lower density -->
+      <path d="M28 165 C120 168 262 170 394 159 C392 166 380 174 360 175 L32 175 C29 172 27 169 28 165 Z" fill="#000" fill-opacity=".1"/>
+      <path d="M28 165 C120 168 262 170 394 159" fill="none" stroke="#000" stroke-opacity=".16" stroke-width=".9"/>
+      <!-- heel flare lobe -->
+      <path d="M26 150 C22 160 24 170 32 175 L58 175 C46 168 40 158 40 148 Z" fill="#000" fill-opacity=".08"/>
+      <!-- sculpted concave walls -->
+      <path d="M150 158 C174 154 204 154 230 157.5 C204 160 174 160.5 150 158 Z" fill="#000" fill-opacity=".08"/>
+      <path d="M244 156.5 C268 153 294 152.5 316 154.5 C294 158 268 158.5 244 156.5 Z" fill="#000" fill-opacity=".07"/>
+      <use href="#mid-shape" fill="url(#g-mid)"/>
+      <path d="M32 151 C82 147 122 151 172 151 L294 151 C332 149 362 146 390 147" fill="none" stroke="#fff" stroke-opacity=".6" stroke-width="1.1"/>
+      <!-- lens-shaped gel window -->
+      <path d="M56 160 C66 152 104 152 118 160 C104 167 66 167 56 160 Z" style="fill:var(--a)"/>
+      <path d="M56 160 C66 152 104 152 118 160 C104 167 66 167 56 160 Z" fill="url(#g-gel)"/>
+      <path d="M56 160 C66 152 104 152 118 160 C104 167 66 167 56 160 Z" fill="none" stroke="#000" stroke-opacity=".28" stroke-width=".8"/>
+      <path d="M66 157 C76 154.5 92 154.5 100 156" fill="none" stroke="#fff" stroke-opacity=".7" stroke-width="1.4" stroke-linecap="round"/>
+      <!-- rubber toe guard wrapping up the front -->
+      <path d="M356 175 C376 174 390 166 396 154 C398 163 395 173 386 179 C378 183 366 182 356 179 Z" style="fill:var(--s)"/>
+      <path d="M356 175 C376 174 390 166 396 154 C398 163 395 173 386 179 C378 183 366 182 356 179 Z" fill="#000" fill-opacity=".48"/>
     </symbol>
 
+    <!-- ===== Upper ===== -->
     <symbol id="shoe-up" viewBox="0 0 400 220">
       <use href="#upper-shape" style="fill:var(--m)"/>
-      <use href="#upper-shape" style="fill:url(#p-mesh)"/>
-      <path d="M34 150 C24 120 28 92 46 74 C58 82 72 104 80 126 C84 138 86 146 86 152 L34 152 Z" fill="#000" fill-opacity=".16"/>
-      <path d="M300 104 C340 112 376 124 388 140 C391 148 388 152 382 152 L292 152 C288 132 292 116 300 104 Z" fill="#000" fill-opacity=".13"/>
-      <path d="M94 148 C140 120 202 102 276 110 C242 116 202 130 170 150 Z" style="fill:var(--a)"/>
-      <path d="M118 150 C158 132 210 120 264 121" style="stroke:var(--a)" stroke-width="3" fill="none" stroke-linecap="round" opacity=".65"/>
-      <path d="M150 66 C190 76 232 90 270 104 L262 118 C224 104 186 92 144 82 Z" fill="#000" fill-opacity=".18"/>
-      <g fill="#000" fill-opacity=".5">
-        <circle cx="160" cy="74" r="2.6"/><circle cx="178" cy="80" r="2.6"/><circle cx="196" cy="86" r="2.6"/><circle cx="214" cy="92" r="2.6"/><circle cx="232" cy="98" r="2.6"/><circle cx="250" cy="105" r="2.6"/>
+      <use href="#upper-shape" fill="url(#p-mesh)"/>
+      <!-- toe box: breathable mesh with fine perforations -->
+      <use href="#toe-shape" fill="#fff" fill-opacity=".05"/>
+      <use href="#toe-shape" fill="url(#p-perf)"/>
+      <!-- mudguard: thin abrasion skin around the toe -->
+      <path d="M232 153 C262 147 300 138 332 130 C356 124 380 126 390 138 C392 146 390 152 382 153 Z" fill="#000" fill-opacity=".2"/>
+      <path d="M232 153 C262 147 300 138 332 130 C356 124 380 126 390 138" fill="none" stroke="#fff" stroke-opacity=".12" stroke-width=".9"/>
+      <!-- heel counter + external clip -->
+      <path d="M38 153 C30 133 28 104 38 84 C50 90 64 108 73 128 C77 138 79 146 79 153 Z" fill="#000" fill-opacity=".26"/>
+      <path d="M38 84 C50 90 64 108 73 128 C77 138 79 146 79 153" fill="none" stroke="#fff" stroke-opacity=".12" stroke-width=".9"/>
+      <path d="M44 140 C40 122 41 106 48 94 L56 99 C50 111 49 125 52 140 Z" style="fill:var(--a)"/>
+      <g stroke="#000" stroke-opacity=".25" stroke-width=".9"><path d="M46 106 L53 108.5"/><path d="M45 116 L51 117.5"/><path d="M45 126 L51 126.5"/></g>
+      <!-- original side mark: split sweep -->
+      <path d="M108 143 C146 121 196 109 252 109 C226 115 194 127 168 143 Z" style="fill:var(--a)"/>
+      <path d="M128 150 C164 136 208 127 248 124 L246.5 128 C206 131 164 140 132 152 Z" style="fill:var(--a)" fill-opacity=".75"/>
+      <path d="M112 141 C148 120 196 110 246 110" fill="none" stroke="#fff" stroke-opacity=".32" stroke-width=".9"/>
+      <!-- eyestay with ringed eyelets -->
+      <path d="M152 64 C190 75 230 89 268 102 L264 112 C226 99 188 86 149 75 Z" fill="#000" fill-opacity=".14"/>
+      <g fill="#0e0e10" stroke="#fff" stroke-opacity=".45" stroke-width=".8">
+        <circle cx="161" cy="71" r="2.8"/><circle cx="178" cy="76.6" r="2.8"/><circle cx="195" cy="82.2" r="2.8"/><circle cx="212" cy="87.8" r="2.8"/><circle cx="229" cy="93.4" r="2.8"/><circle cx="246" cy="99" r="2.8"/>
       </g>
-      <g stroke-linecap="round" fill="none">
-        <g stroke="#000" stroke-opacity=".25" stroke-width="6.5"><path d="M158 70 L176 63"/><path d="M176 76 L194 69"/><path d="M194 82 L212 75"/><path d="M212 88 L230 81"/><path d="M230 94 L248 88"/></g>
-        <g stroke="#f4f4f6" stroke-width="4.5"><path d="M158 70 L176 63"/><path d="M176 76 L194 69"/><path d="M194 82 L212 75"/><path d="M212 88 L230 81"/><path d="M230 94 L248 88"/></g>
+      <!-- laces: bars crossing over the tongue, as seen from the side -->
+      <g fill="none" stroke-linecap="round">
+        <g stroke="#000" stroke-opacity=".32" stroke-width="5.6"><path d="M161 71 L174 60"/><path d="M178 76.6 L191 65.6"/><path d="M195 82.2 L208 71.4"/><path d="M212 87.8 L225 77.2"/><path d="M229 93.4 L242 83"/><path d="M246 99 L259 88.8"/></g>
+        <g stroke="#f4f4f6" stroke-width="3.8"><path d="M161 71 L174 60"/><path d="M178 76.6 L191 65.6"/><path d="M195 82.2 L208 71.4"/><path d="M212 87.8 L225 77.2"/><path d="M229 93.4 L242 83"/><path d="M246 99 L259 88.8"/></g>
+        <g stroke="#fff" stroke-opacity=".9" stroke-width="1"><path d="M162.5 69 L172 61"/><path d="M179.5 74.6 L189 66.6"/><path d="M196.5 80.2 L206 72.4"/><path d="M213.5 85.8 L223 78.2"/><path d="M230.5 91.4 L240 84"/><path d="M247.5 97 L257 89.8"/></g>
       </g>
-      <path d="M158 52 L170 30 C174 24 184 22 192 26 L200 34 C196 40 190 44 184 46 C176 48 166 50 158 52 Z" fill="#fff" fill-opacity=".14"/>
-      <rect x="176" y="29" width="15" height="6" rx="3" transform="rotate(22 183 32)" style="fill:var(--a)"/>
-      <path d="M46 72 C56 62 70 58 82 61 C98 64 110 74 124 76" fill="none" stroke="#000" stroke-opacity=".3" stroke-width="7" stroke-linecap="round"/>
-      <path d="M40 82 C36 94 36 106 38 118" style="stroke:var(--a)" stroke-width="6" stroke-linecap="round" fill="none"/>
-      <path d="M88 140 C150 112 222 100 302 106" stroke="#fff" stroke-opacity=".35" stroke-dasharray="3 4" fill="none" stroke-width="1"/>
-      <path d="M296 108 C336 116 368 128 384 142" stroke="#fff" stroke-opacity=".3" stroke-dasharray="3 4" fill="none" stroke-width="1"/>
-      <circle cx="60" cy="122" r="7" style="fill:var(--a)"/>
-      <circle cx="60" cy="122" r="3" fill="#000" fill-opacity=".35"/>
-      <path d="M58 64 C80 55 104 65 124 73 C104 70 80 62 60 68 Z" fill="#000" fill-opacity=".45"/>
-      <g fill="#000" fill-opacity=".22">
-        <circle cx="330" cy="124" r="1.4"/><circle cx="340" cy="126" r="1.4"/><circle cx="350" cy="129" r="1.4"/><circle cx="360" cy="132" r="1.4"/>
-        <circle cx="335" cy="132" r="1.4"/><circle cx="345" cy="135" r="1.4"/><circle cx="355" cy="138" r="1.4"/><circle cx="365" cy="141" r="1.4"/>
-        <circle cx="340" cy="141" r="1.4"/><circle cx="350" cy="144" r="1.4"/><circle cx="360" cy="146" r="1.4"/>
+      <!-- tongue padding + woven label -->
+      <path d="M150 58 L163 34 C168 25 181 21 192 25 L201 32 C196 40 188 46 180 48 C170 51 159 54 150 58 Z" fill="#fff" fill-opacity=".12"/>
+      <path d="M163 34 C168 25 181 21 192 25" fill="none" stroke="#fff" stroke-opacity=".25" stroke-width="1.1"/>
+      <rect x="173" y="28" width="17" height="9" rx="2.5" transform="rotate(22 181 32)" style="fill:var(--a)"/>
+      <rect x="177" y="31.4" width="9" height="2.2" rx="1.1" transform="rotate(22 181 32)" fill="#fff" fill-opacity=".85"/>
+      <!-- padded collar, lining, pull tab -->
+      <path d="M62 66 C80 59 102 68 120 74 C133 78 143 72 149 62 C144 76 131 84 116 82 C97 79 80 70 64 74 Z" fill="#000" fill-opacity=".52"/>
+      <path d="M44 80 C53 66 68 61 84 63 C99 65 111 72 124 74" fill="none" stroke="#000" stroke-opacity=".28" stroke-width="5.5" stroke-linecap="round"/>
+      <path d="M44 80 C53 66 68 61 84 63 C99 65 111 72 124 74" fill="none" stroke="#fff" stroke-opacity=".18" stroke-width="2.6" stroke-linecap="round"/>
+      <path d="M56 63 C51 51 57 43 66 46 L69 60 Z" style="fill:var(--a)"/>
+      <path d="M59 58 C57 53 59 50 63 51" fill="none" stroke="#000" stroke-opacity=".35" stroke-width="1.5" stroke-linecap="round"/>
+      <!-- two-tone stitching (reads on light and dark uppers) -->
+      <g fill="none" stroke-width=".85" stroke-dasharray="2.4 2.6">
+        <g stroke="#000" stroke-opacity=".2" transform="translate(0 .8)">
+          <path d="M234 149.5 C264 143.5 302 134.5 334 126.5 C356 121 378 123 387 134"/><path d="M150 79 C188 90 226 103 262 115"/><path d="M41 88 C53 94 64 112 70 130 C74 140 75 147 76 150"/><path d="M64 78 C82 73 101 80 116 86"/>
+        </g>
+        <g stroke="#fff" stroke-opacity=".34">
+          <path d="M234 149.5 C264 143.5 302 134.5 334 126.5 C356 121 378 123 387 134"/><path d="M150 79 C188 90 226 103 262 115"/><path d="M41 88 C53 94 64 112 70 130 C74 140 75 147 76 150"/><path d="M64 78 C82 73 101 80 116 86"/>
+        </g>
       </g>
-      <path d="M150 84 C176 98 196 122 204 150 L238 150 C232 122 216 100 196 90 Z" fill="#fff" fill-opacity=".06"/>
-      <ellipse cx="352" cy="121" rx="26" ry="5" transform="rotate(14 352 121)" fill="#fff" fill-opacity=".12"/>
-      <use href="#upper-shape" style="fill:url(#g-upper)"/>
-      <use href="#upper-shape" style="fill:url(#g-rim)"/>
+      <!-- light: top-down gradient, rim light, specular along the vamp, toe sheen, crisp outline -->
+      <use href="#upper-shape" fill="url(#g-upper)"/>
+      <use href="#upper-shape" fill="url(#g-rim)"/>
+      <path d="M214 58 C250 72 298 85 348 97" fill="none" stroke="#fff" stroke-opacity=".18" stroke-width="2.2" stroke-linecap="round"/>
+      <ellipse cx="362" cy="110" rx="22" ry="4.2" transform="rotate(20 362 110)" fill="#fff" fill-opacity=".14"/>
+      <use href="#upper-shape" fill="none" stroke="#000" stroke-opacity=".26" stroke-width=".8"/>
     </symbol>
 
+    <!-- ===== Full shoe ===== -->
     <symbol id="shoe" viewBox="0 0 400 220">
-      <ellipse cx="210" cy="201" rx="196" ry="11" fill="url(#g-shadow)"/>
+      <ellipse cx="210" cy="197" rx="192" ry="10" fill="url(#g-shadow)"/>
+      <ellipse cx="208" cy="192" rx="168" ry="3.6" fill="url(#g-contact)"/>
       <use href="#shoe-out"/><use href="#shoe-mid"/><use href="#shoe-up"/>
     </symbol>
   </defs>
@@ -286,7 +339,7 @@
         <!-- each layer is its own <svg> so the GPU can move it without repainting the drawing -->
         <div class="anat__rig" id="anat-rot" style="--m:#16171b;--a:#c6ff3d;--s:#ececf0">
           <svg class="anat__layer" id="anat-out" viewBox="-200 -110 800 440" aria-hidden="true">
-            <ellipse cx="210" cy="206" rx="196" ry="10" fill="url(#g-shadow)"/>
+            <ellipse cx="210" cy="198" rx="194" ry="10" fill="url(#g-shadow)"/>
             <use href="#shoe-out" x="0" y="0" width="400" height="220"/>
           </svg>
           <svg class="anat__layer" id="anat-mid" viewBox="-200 -110 800 440" aria-hidden="true"><use href="#shoe-mid" x="0" y="0" width="400" height="220"/></svg>
